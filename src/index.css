@@ -2,18 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: white !important;
-}
- .inputs{
-  background-color: transparent !important;
+ body{
+   
+  overflow:  hidden !important;
  }
- .selects{
-    min-height: 12px !important;
- }
- .recharts-legend-item, .legend-item-0{
-    display: none !important;
- }
+ /* @font-face {
+  font-family: 'Old English';
+  src: url('./fonts/OldEnglishTextMT.ttf');
+  
+  font-style: normal;
+  font-weight: 400;
+} */
 
  .container-sk {
    padding-right: 15px;
@@ -35,6 +34,8 @@ body{
  @media (min-width: 1200px) {
    .container-sk {
      width: 1140px;
+
+     background: #201f1f80;
    }
  }
 
@@ -45,3 +46,7 @@ body{
    }
  }
  
+
+ /* custome arrow  */
+
+  

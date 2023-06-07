@@ -10,6 +10,7 @@ import { RouterProvider } from 'react-router-dom';
 import route from 'routes/Route';
 import { Provider } from 'react-redux';
 import store from 'rtk/store/store';
+import "react-multi-carousel/lib/styles.css";
  const theme = createTheme({
 
  })
@@ -32,9 +33,8 @@ root.render(
       theme="dark"
       />
       <Provider store={store}>
-      <RouterProvider router={route}/>
-      </Provider>
-     
+      <App/>
+      </Provider>  
     </ThemeProvider>
    </StyledEngineProvider>
   

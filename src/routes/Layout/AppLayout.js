@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 const AppLayout = () => {
     return (
         <div>
-            <div>this is name</div>
+            <div> </div>
             <Outlet/>
-            <div>goto mosque</div>
+            <div> </div>
         </div>
     );
 };
