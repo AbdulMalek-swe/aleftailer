@@ -3,8 +3,9 @@
 @tailwind utilities;
 
  body{
-   
-  overflow:  hidden !important;
+   font-family: Arial, Helvetica, sans-serif;
+   overflow-x: hidden !important;
+  /* border-color: #00000080; */
  }
  /* @font-face {
   font-family: 'Old English';
@@ -13,7 +14,10 @@
   font-style: normal;
   font-weight: 400;
 } */
-
+  .sdfsdf{
+    color: #00000080;
+    background-color: #00000080;
+  }
  .container-sk {
    padding-right: 15px;
    padding-left: 15px;
@@ -34,8 +38,6 @@
  @media (min-width: 1200px) {
    .container-sk {
      width: 1140px;
-
-     background: #201f1f80;
    }
  }
 

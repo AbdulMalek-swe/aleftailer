@@ -1,12 +1,19 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import Navbar from './Navbar';
+ 
+import Home from 'pages/Home/Home';
 
 const AppLayout = () => {
+    const {pathname} = useLocation()
     return (
         <div>
-            <div> </div>
+            {
+                pathname==='/' ? <Home/>: <Navbar/>
+            }
+            
             <Outlet/>
-            <div> </div>
+            <div> sdfsd</div>
         </div>
     );
 };

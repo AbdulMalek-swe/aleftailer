@@ -3,7 +3,8 @@ import Carousel from 'react-multi-carousel';
 
 const Slider = () => {
     return (
-        <Carousel
+      <div className='container-sk'>
+          <Carousel
         additionalTransfrom={0}
         arrows
         autoPlaySpeed={3000}
@@ -51,7 +52,7 @@ const Slider = () => {
           <img
             src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
             alt='loading'
-            className='w-[99.9%]'
+            className='w-full'
             
              
           />
@@ -63,6 +64,7 @@ const Slider = () => {
           </div>
         </div>    
       </Carousel>
+      </div>
     );
 };
 

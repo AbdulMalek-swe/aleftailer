@@ -6,8 +6,9 @@ import Modal from './Modal';
 const HeroSection = () => {
     return (
         <>
-            <Slider/>
-            <Sidebar/>
+         
+            {/* <Slider/> */}
+            {/* <Sidebar/> */}
             <Modal/>
         </>
     );

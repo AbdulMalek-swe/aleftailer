@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CssBaseline, StyledEngineProvider,ThemeProvider ,createTheme} from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider, useNavigate } from 'react-router-dom';
 import route from 'routes/Route';
 import { Provider } from 'react-redux';
 import store from 'rtk/store/store';
 import "react-multi-carousel/lib/styles.css";
+import axios from 'apiService/axios';
+import  { addUserActions } from 'rtk/feature/addUserSlice';
+import { useCookies } from 'react-cookie';
+function App() {
+  const [, , removeCookie] = useCookies(["token"]);
+  
+  useEffect(()=>{
+  async function getUser(){
+   try {
+    const res = await axios.post('/user/me')
+       store.dispatch(addUserActions.addUser(res.data.result))
+   } catch (error) {
+    removeCookie("token", { path: "/" });
+   }
+   }
+     getUser()
+  },[removeCookie])
+  return (
+    <RouterProvider router={route}/>
+  );
+}
+
+export default App;
  const theme = createTheme({
 
  })
