@@ -14,7 +14,8 @@ const Contact = () => {
                                     type="text"
                                     id="first_name"
                                     name="first_name"
-                                    className={`block w-full px-5 py-3 mt-2 text-white placeholder-white bg-white8 shadow-lg rounded-lg   `}
+                                    className={`block w-full px-5 py-3 mt-2 text-white placeholder-white bg-white8 shadow-lg rounded-lg   `} 
+                                    // sdf
                                 />
                             </div>
                             <div className='my-5'>
