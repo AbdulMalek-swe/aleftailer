@@ -1,81 +1,99 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import img from 'assets/image/shoes-bags-close-up.jpg'
+import { Button1 } from 'componants/Common/Button/Button';
+import axios from 'apiService/axios';
 const Slider = () => {
-    return (
-      <div className=' '>
-          <Carousel
-         additionalTransfrom={0}
-         arrows
-         autoPlaySpeed={3000}
-         centerMode={false}
-         className=" w-full"
-         containerClass="containe"
-         dotListClass=""
-         draggable
-         focusOnSelect={false}
-         infinite
-         itemClass=""
-         keyBoardControl
-         minimumTouchDrag={80}
-         pauseOnHover
-         renderArrowsWhenDisabled={false}
-         renderButtonGroupOutside={false}
-         renderDotsOutside={false}
-         responsive={{
-           desktop: {
-             breakpoint: {
-               max: 3000,
-               min: 1024
-             },
-             items: 1
-           },
-           mobile: {
-             breakpoint: {
-               max: 464,
-               min: 0
-             },
-             items: 1
-           },
-           tablet: {
-             breakpoint: {
-               max: 1024,
-               min: 464
-             },
-             items: 1
-           }
-         }}
-         rewind={false}
-         rewindWithAnimation={false}
-         rtl={false}
-         shouldResetAutoplay
-          
-         sliderClass=""
-         slidesToSlide={1}
-         swipeable
-      >
+  const [banner,setBanner] = useState([])
+  useEffect(()=>{
+    axios.get("/banner")
+    .then(res=>{
+      console.log(res);
+      setBanner(res.data.result)
+    })
+  },[])
+  return (
+    <div className=' container-sk mt-[156px]'>
+     <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=" w-full"
+          containerclassName="containe"
+          dotListclassName=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemclassName=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024
+              },
+              items: 1
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0
+              },
+              items: 1
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464
+              },
+              items: 1
+            }
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+  
+          sliderclassName=""
+          slidesToSlide={1}
+          swipeable
         
-        <div  >
-          <img
-            src={img}
-            alt='loading'
-            style={{
+        >
+    {
+        banner.map(item=>
+          <div className='mx-3' >
+            <img
+              src={item?.bannerImage}
+              alt='loading'
+              style={{
                 display: 'block',
-                height: '100%',
                 margin: 'auto',
                 width: '100%'
               }}
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-           <div>
-           <p className="text-white text-2xl font-bold">Centered Text</p>
-            <p className="text-white text-2xl font-bold">Centered Text</p>
-           </div>
-          </div>
-        </div>    
-      </Carousel>
-      </div>
-    );
+              className='h-96'
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className='text-center'>
+                <p className="text-white font-italianno text-xl font-normal capitalize">{item.bannerFirstHeader} </p>
+                <h1 className="text-white  font-black font-arial text-7xl capitalize"> {item.bannerSecondHeader}</h1>
+                <p className='text-orange text-xl italic font-bold font-arial'> Sale Up to {item.discount}% off</p>
+                <div>
+                  <Button1 />
+                </div>
+              </div>
+            </div>
+          </div>)}
+        </Carousel>
+      
+     
+    </div>
+  );
 };
 
 export default Slider;

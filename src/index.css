@@ -3,21 +3,38 @@
 @tailwind utilities;
 
  body{
-   font-family: Arial, Helvetica, sans-serif;
+   /* font-family: Arial, Helvetica, sans-serif; */
+   font-family: Italianno,cursive;
    overflow-x: hidden !important;
   /* border-color: #00000080; */
  }
- /* @font-face {
-  font-family: 'Old English';
-  src: url('./fonts/OldEnglishTextMT.ttf');
-  
-  font-style: normal;
-  font-weight: 400;
-} */
-  .sdfsdf{
-    color: #00000080;
-    background-color: #00000080;
-  }
+ 
+ /* body scroll bar custom design  */
+ ::-webkit-scrollbar {
+  width: 10px !important;
+  background-color: transparent !important;
+  border: 0px red solid;
+  box-shadow: 0px 0px 0px 0px red;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #656363; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF0000; 
+}
+
+/* container code  */
  .container-sk {
    padding-right: 15px;
    padding-left: 15px;
@@ -48,7 +65,29 @@
    }
  }
  
-
- /* custome arrow  */
-
-  
+/* alif navbar custom code  */
+.nav-link-alif {
+  padding: 20px 0px;
+  margin: 0px 10px;
+  display: inline-block;
+  position: relative;
+  opacity: 0.75;
+}
+ 
+.nav-link-alif:hover {
+  opacity: 1;
+}
+.nav-link-alif::before {
+  transition: 300ms;
+  height: 5px;
+  content: "";
+  position: absolute;
+  background-color: white;
+}
+.nav-link-ltr-alif::before {
+  width: 0%;
+  bottom: 10px;
+}
+.nav-link-ltr-alif:hover::before {
+  width: 100%;
+}
