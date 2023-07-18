@@ -20,12 +20,15 @@ const ProductDetails = () => {
        const newItem = {...e,quantity:Number(quantity)};
        addToCartHandle(newItem)
       }
-      console.log(quantity);
+      console.log(result.productImage);
     return (
         <div className='mt-60 container-sk mb-7 '>
             <div className='grid md:grid-cols-2 grid-cols-1 gap-6'>
-                <div>
-                    <img src={img} alt='loading...' className='object-contain w-full' />
+                <div >
+                    { 
+                    result?.productImage.map(item=> <img src={item} alt='loading...' className='object-contain w-full mb-5' />)
+                    // <img src={item} alt='loading...' className='object-contain w-full' />
+                    }
                 </div>
                 <div className='font-sans font-normal'>
                     <h1 className=' text-2xl '>{result?.name}</h1>

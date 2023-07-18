@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img from 'assets/image/insider1.svg'
 import img1 from 'assets/image/insider2.svg'
 import img2 from 'assets/image/insider4.svg'
 import img3 from 'assets/image/insider4.svg'
 import img4 from 'assets/image/insider6.svg'
 const InsiderAlif = () => {
+    useEffect(()=>{
+        window.scroll(0,0)
+       },[])
     return (
         <div>
             <div className='bg-insiderAlif bg-cover bg-no-repeat h-[600px] flex flex-col items-center justify-center'>

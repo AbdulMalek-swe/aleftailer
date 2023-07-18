@@ -5,6 +5,8 @@ import { Avatar, Badge, Box, Button, ClickAwayListener, Grow, IconButton, ListIt
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
 import { Logout } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [rmv, setRmv] = useState(true)
@@ -69,6 +71,11 @@ const Navbar = () => {
         prevOpen.current = open;
     }, [open]);
 
+    const { t } = useTranslation();
+
+    // function handleClick(lang) {
+    //   i18next.changeLanguage(lang)
+    // }
     return (
         <div className='containe z-50'>
             <div className={navbarColor}>
@@ -104,7 +111,7 @@ const Navbar = () => {
                                 to="/"
                                 className={navLink1}
                             >
-                                Home
+                                Home {t('Thanks.1')}
                             </Link>
                         </li>
 

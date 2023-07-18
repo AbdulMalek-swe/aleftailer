@@ -7,6 +7,7 @@ import store from 'rtk/store/store';
 import { addCartActions } from 'rtk/feature/addCart';
 import { Checkbox } from '@mui/material';
 import cartHook from 'hooks/cartHook';
+import { Link } from 'react-router-dom';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -62,7 +63,9 @@ const Cart = () => {
   const newIds = []
   const idArray = checkOut.map(item => item._id);
   newIds.push(idArray)
- 
+   const cartInc = id =>{
+    addToCartHandleItems({_id:id})
+   }
   return (
     <div className='container-sk mt-52 mb-7'>
       <h1 className='text-center shadow-lg py-5 text-6xl font-sans font-bold uppercase leading-10 rounded-lg'>your cart</h1>
@@ -77,7 +80,7 @@ const Cart = () => {
           {
             cart?.items?.map((item, index) => <div className='grid grid-cols-3 shadow-lg rounded-lg p-5 gap-4 my-5' key={index}>
               <div>
-                <img src={img1} alt='loading...' className='object-contain rounded-l-lg' />
+                <img src={item?.productImage[0]} alt='loading...' className='object-contain rounded-l-lg' />
               </div>
               <div className='col-span-2 flex flex-col justify-between'>
                 <div className='flex justify-between'>
@@ -94,7 +97,7 @@ const Cart = () => {
                   <span className='bg-black text-white font-sans font-semibold text-xl rounded-lg py-1'>
                     <button className='pr-5 pl-2 text-2xl' onClick={() => removeFromCartHandle(item._id)}>-</button>
                     <span>{item.quantity}</span>
-                    <button className='pl-5 pr-2 text-2xl' onClick={() => addToCartHandleItems(item)} >+</button>
+                    <button className='pl-5 pr-2 text-2xl' onClick={() => cartInc(item._id)} >+</button>
                   </span>
                 </p>
               </div>
@@ -121,7 +124,9 @@ const Cart = () => {
             <button className='font-semibold font-sans text-xl w-full bg-black text-white rounded-lg py-4 text-center hover:bg-black8'> <ShoppingCartOutlinedIcon /> GO TO CHECKOUT({checkOut?.length}) <ShoppingCartOutlinedIcon /></button>
           </div>
           <div className='text-center mb-5'>
-            <button className='font-semibold font-sans text-xl w-full shadow-lg text-black rounded-lg py-4 text-center hover:bg-black8 flex items-center justify-center'> <BiSolidShoppingBags /> <span className='mx-2 capitalize'> continue shopping </span><BiSolidShoppingBags /></button>
+           <Link to="/payment">
+           <button className='font-semibold font-sans text-xl w-full shadow-lg text-black rounded-lg py-4 text-center hover:bg-black8 flex items-center justify-center'> <BiSolidShoppingBags /> <span className='mx-2 capitalize' > continue shopping </span><BiSolidShoppingBags /></button>
+           </Link>
           </div>
         </div>
       </div>

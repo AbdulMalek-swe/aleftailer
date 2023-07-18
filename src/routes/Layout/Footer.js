@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ChatBubbleRoundedIcon from '@mui/icons-material/ChatBubbleRounded';
+import { BsMessenger} from 'react-icons/bs';
+ import {AiFillTwitterCircle} from 'react-icons/ai'
 const Footer = () => {
     return (
         <div className='bg-black z-100' style={{zIndex:9999}}>
@@ -65,7 +67,7 @@ const Footer = () => {
                         <div className='flex justify-around'>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'><ChatBubbleRoundedIcon className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'>  <BsMessenger className=' rounded-full   text-2xl' /></p>
                             </div>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
@@ -77,7 +79,7 @@ const Footer = () => {
                             </div>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'><FacebookRoundedIcon className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'> <AiFillTwitterCircle className=' rounded-full   text-2xl' /></p>
                             </div>
                         </div>
                     </div>

@@ -20,8 +20,8 @@ const VeganProduct = () => {
         <div className='mx-'>
           <div className='grid md:grid-cols-2 grid-cols-1 gap-x-4 items-center'>
             <div>
-              <h1 className='text-center mb-10 font-arial text-4xl uppercase py-7'>Vegan Products</h1>
-              <p className='text-justify'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five </p>
+              <h1 className='text-center mb-10 font-arial text-4xl uppercase py-7'>{vegan[0]?.veganHeader}</h1>
+              <p className='text-justify'> {vegan[0]?.veganDescription} </p>
               <div className='text-center py-7'>
                 <Button1 />
               </div>
@@ -34,7 +34,7 @@ const VeganProduct = () => {
         <div className='py-7'>
       <div className='grid md:grid-cols-3 grid-cols-1 gap-x-6'>
         {
-          vegan.map((item,index)=><ProductsCard key={index} item={item}/>)
+          vegan.slice(1,4).map((item,index)=><ProductsCard key={index} item={item}/>)
         }
          
 
@@ -60,7 +60,7 @@ export const ProductsCard = ({item}) => {
               <img src={item?.veganImage} alt='loading...' className='h-8 w-8 rounded-full ' />
             </div>
             <h1 className='mb-3 font-arial text-2xl uppercase py-1 font-bold'>{item?.veganHeader} </h1>
-            <p className='font-arial text-justify leading-5'> {item?.veganDescrition}</p>
+            <p className='font-arial text-justify leading-5'> {item?.veganDescription}</p>
           </div>
         </div>
        

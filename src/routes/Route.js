@@ -12,6 +12,8 @@ import Cart from "pages/Cart/Cart";
 import ProductDetails from "pages/ProductDetails/ProductDetails";
 import MakeOrder from "pages/MakeToOrder/MakeOrder/MakeOrder";
 import Appointment from "pages/MakeToOrder/Appointment/Appointment";
+import Stripe from "pages/Payment/StripeForm";
+ 
 const { createBrowserRouter } = require("react-router-dom");
 const route = createBrowserRouter([
      {
@@ -44,10 +46,7 @@ const route = createBrowserRouter([
                path:"/make-order",
                element:<MakeOrder/>
           },
-          {
-               path:"/appointment",
-               element:<Appointment/>
-          },
+          
           {
                path:"/insider-alif",
                element:<InsiderAlif/>
@@ -63,6 +62,14 @@ const route = createBrowserRouter([
           {
                path:"/contact",
                element:<Contact/>
+          },
+          {
+               path:"/appointment",
+               element:<Appointment/>
+          },
+          {
+               path:"/payment",
+               element:<Stripe/>
           }
           
        ]
