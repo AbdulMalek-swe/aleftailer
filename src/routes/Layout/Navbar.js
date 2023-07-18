@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import aliflogo from 'assets/image/aliflogo.svg'
-import { Avatar, Badge, Box, Button, ClickAwayListener, Grow, IconButton, ListItemIcon, Menu, MenuItem, MenuList, Paper, Popper, Tooltip } from '@mui/material';
+import { Avatar, Badge,   Button, ClickAwayListener, Grow,   MenuItem, MenuList, Paper, Popper  } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
-import { Logout } from '@mui/icons-material';
+ 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 const Navbar = () => {
@@ -73,9 +73,9 @@ const Navbar = () => {
 
     const { t } = useTranslation();
 
-    // function handleClick(lang) {
-    //   i18next.changeLanguage(lang)
-    // }
+    function handleLangChange(lang) {
+      i18next.changeLanguage(lang.target.value)
+    }
     return (
         <div className='containe z-50'>
             <div className={navbarColor}>
@@ -99,58 +99,21 @@ const Navbar = () => {
                 <div className='flex items-center justify-center mt-2'>
                     <img src={aliflogo} alt='loading' />
                 </div>
-                <div className="relative flex items-center justify-between  ">
-                    <div className='bg-blue-700 z-100 '>
-
+                <div className="relative flex items-center justify-between ">
+                    <div className='bg-blue-700 z-100  '>
                     </div>
-
-                    <ul className=" ml-[350px] hidden lg:flex items-center ">
-                        <li className='mx-2'>
+                    <ul className=" lg:ml-[100px] md:ml-[150px] hidden lg:flex items-center ">
+                        {
+                            ["/","/shop","/make-order","/insider-alif","/contact"].map((item,index)=><li className='mx-2 capitalize' key={index}>
                             <Link
 
-                                to="/"
+                                to={item}
                                 className={navLink1}
                             >
-                                Home {t('Thanks.1')}
+                                {t(`nav.${index}`)}
                             </Link>
-                        </li>
-
-                        <li className='mx-2'>
-                            <Link
-                                to="/shop"
-                                className={navLink1}
-                            >
-                                Shop
-                            </Link>
-                        </li>
-                        
-                        <li className='mx-2'>
-                            <Link
-                                to="/make-order"
-                                className={navLink1}
-                            >
-                                Made To Order
-                            </Link>
-                        </li>
-                        <li className='mx-2'>
-                            <Link
-                                to="/insider-alif"
-                                className={navLink1}
-                            >
-                                Insider Alif
-                            </Link>
-                        </li>
-                        <li  >
-                            <Link
-                                to="/contact"
-                                className={navLink1}
-
-                            >
-                                Contact
-                            </Link>
-                        </li>
-
-
+                        </li>)
+                        }
                     </ul>
                     {/*  */}
                     <ul className="  items-center hidden space-x-8 lg:flex mr-3">
@@ -299,9 +262,11 @@ const Navbar = () => {
                                 </Popper>
                             </div>}
                         </li>
-                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg ">
-                            <option selected>EN</option>
-                            <option value="US">SP</option>
+                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onClick={(e)=> {
+                            handleLangChange(e)
+                        }}>
+                            <option selected value="en">EN</option>
+                            <option value="gr">GR</option>
 
                         </select>
 
@@ -351,49 +316,16 @@ const Navbar = () => {
                                     </div>
                                     <nav className="text-slate-900">
                                         <ul className="space-y-4 p-5">
-
-                                            <li >
-                                                <Link
-                                                    to="/partners"
-                                                    className={navLink2}
-                                                >
-                                                    Partners
-                                                </Link>
-                                            </li>
-                                            <li >
-                                                <Link
-                                                    to="/contract"
-                                                    className={navLink2}
-                                                >
-                                                    Contact
-                                                </Link>
-                                            </li>
-                                            <li >
-                                                <Link
-                                                    to="/contract"
-                                                    className={navLink2}
-                                                >
-                                                    Contact
-                                                </Link>
-                                            </li>
-                                            <li >
-                                                <Link
-                                                    to="/contract"
-                                                    className={navLink2}
-                                                >
-                                                    Contact
-                                                </Link>
-                                            </li>
-                                            <li >
-                                                <Link
-                                                    to="/contract"
-                                                    className={navLink2}
-                                                >
-                                                    Contact
-                                                </Link>
-                                            </li>
-
-
+                                        {
+                            ["/","/shop","/make-order","/insider-alif","/contact"].map((item,index)=><li className='mx-2 capitalize' key={index}>
+                            <Link
+                                to={item}
+                                className={navLink2}
+                            >
+                                {t(`nav.${index}`)}
+                            </Link>
+                        </li>)
+                        }                               
                                         </ul>
                                         <ul className="flex items-center mt-6  space-x-8 lg:flex">
 
@@ -423,9 +355,11 @@ const Navbar = () => {
                                                 </svg>
                                             </form>
 
-                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg ">
-                                                <option selected className="text-slate-900">ENG</option>
-                                                <option value="US">SP</option>
+                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg " onClick={(e)=> {
+                            handleLangChange(e)
+                        }} >
+                                                <option selected className="text-slate-900" value="en"> EN</option>
+                                                <option value="gr">GR</option>
 
                                             </select>
                                         </ul>
