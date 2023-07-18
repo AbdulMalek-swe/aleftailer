@@ -1,7 +1,11 @@
 {
     "nav": {
-        "0":"grhome",
-        "1": "shopt"
+        "0":"home",
+        "1": "shop",
+        "2":"made to order",
+        "3": "inside alif",
+        "4":"contact"
+        
     }
     
 }

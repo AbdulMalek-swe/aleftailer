@@ -20,7 +20,6 @@ const Navbar = () => {
         const handleScroll = () => {
             const position = window.pageYOffset;
             //   setScrollPosition(position);
-
             // Change the navbar color based on the scroll position
             if (position > 100) {
                 setRmv(false)
@@ -30,9 +29,7 @@ const Navbar = () => {
                 setNavbarColor('text-white8 bg-black8 fixed w-full top-0 z-10');
             }
         };
-
         window.addEventListener('scroll', handleScroll);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -100,9 +97,8 @@ const Navbar = () => {
                     <img src={aliflogo} alt='loading' />
                 </div>
                 <div className="relative flex items-center justify-between ">
-                    <div className='bg-blue-700 z-100  '>
-                    </div>
-                    <ul className=" lg:ml-[100px] md:ml-[150px] hidden lg:flex items-center ">
+                    
+                    <ul className="   hidden lg:flex items-center ">
                         {
                             ["/","/shop","/make-order","/insider-alif","/contact"].map((item,index)=><li className='mx-2 capitalize' key={index}>
                             <Link
