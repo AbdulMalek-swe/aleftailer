@@ -4,10 +4,13 @@ import aliflogo from 'assets/image/aliflogo.PNG'
 import { Avatar, Badge,   Button, ClickAwayListener, Grow,   MenuItem, MenuList, Paper, Popper  } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
- 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import store from 'rtk/store/store';
+import { addUserActions } from 'rtk/feature/addUserSlice';
+import { useCookies } from 'react-cookie';
 const Navbar = () => {
+    const [, , removeCookie] = useCookies(["token"]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [rmv, setRmv] = useState(true)
     const user = useSelector(state => state.reducer.user)
@@ -72,6 +75,13 @@ const Navbar = () => {
 
     function handleLangChange(lang) {
       i18next.changeLanguage(lang.target.value)
+    }
+    const handleLogout = async() =>{
+        removeCookie("token" )
+        store.dispatch(addUserActions.removeUser({}))
+         
+       
+    
     }
     return (
         <div className='containe z-50'>
@@ -242,7 +252,10 @@ const Navbar = () => {
                                                         >
                                                             Wishlist
                                                         </Link></MenuItem>
-                                                        <MenuItem onClick={handleClose}>
+                                                        <MenuItem  onClick={(e) => {
+  handleLogout();
+  handleClose(e);
+}}>
                                                         <Link
                                                           
                                                             className={navLink1}

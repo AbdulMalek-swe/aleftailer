@@ -8,15 +8,15 @@ import React, { useEffect, useState } from "react";
 import CheckoutForm from "./CheckOuteForm";
 import { useSelector } from "react-redux";
  
- 
-export default   function Stripe() {
+export default  function Stripe({order}) {
+  console.log(order);
     const cart = useSelector(state=>state.reducer.cart)
     console.log(cart.items);
     const c = cart.items
   const [paymentIntent, setPaymentIntent] = useState(null);
   useEffect(() => {
     axios
-      .post(`/payment-method/get-payment-intent`, { payment_type: "subscription" ,c})
+      .post(`/payment-method/get-payment-intent`, { payment_type: "subscription" ,order})
       .then((response) => {
         console.log(response,'please give me the error');
         //  console.log("payment intent data",response?.data);
@@ -44,7 +44,7 @@ export default   function Stripe() {
   return (
     <div className="mt-52">
       <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm amount={paymentIntent?.amount} />
+       <CheckoutForm amount={paymentIntent?.amount} />
     </Elements>
     </div>
   );

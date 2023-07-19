@@ -247,7 +247,7 @@ export const CategoryField = ({product,setCategory,count}) => {
                 ['shoulder','clutches','handbags','pouch','buckets','pouches','vegan'].map(items=> <p className='mt-2 mb-1 mr-4 ml-3 border-b-4 border-dotted flex justify-between capitalize'>
                 <button   className='text-black  font-normal capitalize' onClick={()=>setCategory( items)}>{ items}</button>
                 <span className='text-gray-400 font-medium'> ({ product.filter(item=>item.category===items).length})</span>
-            </p>
+            </p> 
             )
              }
             

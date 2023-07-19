@@ -128,7 +128,7 @@ import {
               type="submit"
               className="lg:text-xl md:textlg text-base capitalize font-display font-bold w-full  py-2 bg-primary text-black hover:text-white hover:bg-primary2"
             >
-              Pay Now {amount}/Year
+              Pay Now {amount} 
             </Button>
           </div>
         </form>
