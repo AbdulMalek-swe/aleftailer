@@ -115,7 +115,7 @@ import {
     </Backdrop>
       <div className=" lg:p-20 md:p-10 p-5  mt-10 bg-white lg:w-2/3 xl:w-2/5 md:w-4/5 w-full border rounded-lg overflow-hidden mx-auto py-10">
         <h4 className="text-primary2 font-bold font-display text-center md:text-2xl text-xl lg:text-3xl  tracking-wide  pb-5">
-          Subscribe  Traclin 
+          Pay for  
         </h4>
         <form onSubmit={handleSubmit} className="mt-2  ">
           <PaymentElement />
@@ -126,7 +126,7 @@ import {
               disabled={!stripe || isLoading}
               variant="contained"
               type="submit"
-              className="lg:text-xl md:textlg text-base capitalize font-display font-bold w-full  py-2 bg-primary text-white hover:text-white hover:bg-primary2"
+              className="lg:text-xl md:textlg text-base capitalize font-display font-bold w-full  py-2 bg-primary text-black hover:text-white hover:bg-primary2"
             >
               Pay Now {amount}/Year
             </Button>

@@ -70,8 +70,8 @@ const Cart = () => {
     <div className='container-sk mt-52 mb-7'>
       <h1 className='text-center shadow-lg py-5 text-6xl font-sans font-bold uppercase leading-10 rounded-lg'>your cart</h1>
       <hr className='h-[1px] bg-gray-300 my-7' />
-      <div className='grid md:grid-cols-3 gap-x-4 justify-center '>
-        <div className='col-span-2'>
+      <div className='grid md:grid-cols-5 gap-x-4 justify-center place-content-center grid-cols-1'>
+        <div className='col-span-3 md:order-1 order-2'>
           <div className='flex justify-around bg-black text-white rounded-lg py-3 font-sans font-semibold text-xl leading-6 capitalize mb-7'>
             <button>items</button>
             <button>details</button>
@@ -104,9 +104,9 @@ const Cart = () => {
             </div>)
           }
         </div>
-        <div>
+        <div className='md:fixed md:top-[32%]  md:right-10 md:order-2 order-1 '>
           <div className='shadow-lg font-sans p-5 rounded-lg'>
-            <h2 className='my-7 font-semibold text-4xl'>Cart Totals</h2>
+            <h2 className=' my-5 font-semibold text-4xl'>Cart Totals</h2>
             <p className='flex justify-between font-light'>
               <span className='block text-base'>Subtotal ( Includes V.A.T )</span>
               <span className='font-normal text-xl block'>€229.00</span>
@@ -124,7 +124,7 @@ const Cart = () => {
             <button className='font-semibold font-sans text-xl w-full bg-black text-white rounded-lg py-4 text-center hover:bg-black8'> <ShoppingCartOutlinedIcon /> GO TO CHECKOUT({checkOut?.length}) <ShoppingCartOutlinedIcon /></button>
           </div>
           <div className='text-center mb-5'>
-           <Link to="/payment">
+           <Link to="/order">
            <button className='font-semibold font-sans text-xl w-full shadow-lg text-black rounded-lg py-4 text-center hover:bg-black8 flex items-center justify-center'> <BiSolidShoppingBags /> <span className='mx-2 capitalize' > continue shopping </span><BiSolidShoppingBags /></button>
            </Link>
           </div>

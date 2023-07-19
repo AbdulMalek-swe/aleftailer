@@ -76,16 +76,16 @@ function Shop(props) {
 console.log(price);
 
   return (
-    <Box sx={{ display: 'flex', }}>
+    <Box sx={{ display: 'flex',zIndex:'-1' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          
+          boxShadow:'0px 0px 0px 0px rgb(0,0,0,0)',
           mt:{sm:'124px',lg:'155px'},
-           background:"white"
+           background:"white",zIndex:'1' 
         }}
       >
         <Toolbar>
@@ -102,7 +102,6 @@ console.log(price);
                            <div className='flex justify-center items-center gap-x-4'>
                            <h2 className='font-sans font-normal text-base text-black7'>Color</h2>
                             <FormControl className='w-40'
-
                             >
                                 <NativeSelect
                                     value={color}
@@ -113,6 +112,7 @@ console.log(price);
                                         id: 'uncontrolled-native',
                                     }}
                                 >
+                                  
                                     <option value='' className='font-sans font-normal text-xs pl-5 pt-5'>All</option>
                                     <option value='black'  className='font-sans font-normal text-xs pl-5 pt-5' >Black</option>
                                     <option value='white'   className='font-sans font-normal text-xs pl-5 pt-5' >White</option>
@@ -199,7 +199,9 @@ console.log(price);
                           </div>
                             
                             <div className=' mx-2 mb-5 font-arial  text-base font-bold  '>
-                            <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2'    onClick={()=>addToCartHandle(item)}><BiSolidShoppingBags/> <span>BUY NOW</span></button>
+                           <Link to={`/order/${item._id}`}>
+                           <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2'    ><BiSolidShoppingBags/> <span>BUY NOW</span></button>
+                           </Link>
 
                             <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2 my-2'    onClick={()=>addToCartHandle(item)}><FaCartPlus/> <span>ADD TO CART</span></button>
                             </div>

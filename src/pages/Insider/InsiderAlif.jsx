@@ -9,13 +9,14 @@ const InsiderAlif = () => {
         window.scroll(0,0)
        },[])
     return (
-        <div>
+        <div  >
             <div className='bg-insiderAlif bg-cover bg-no-repeat h-[600px] flex flex-col items-center justify-center'>
                 <div className='flex flex-col items-center justify-center'>
                     <h2 className='text-7xl uppercase'>Welcome to ALEf</h2>
                     <h4 className='font-sans text-sm uppercase'>WE CREATE BAGS TO CARRY OUR WORLDS</h4>
                 </div>
             </div>
+            <div className='container-sk'>
             <div className='container-sk'>
                 <p className='py-7 text-2xl font-arail leading-7'>
                     <strong>Aleph</strong> is the Phoenician letter that led to the first letter of the Greek alphabet “Alpha”.
@@ -30,6 +31,7 @@ const InsiderAlif = () => {
             <Materials />
             <Brands />
             <Donations />
+            </div>
         </div>
     );
 };

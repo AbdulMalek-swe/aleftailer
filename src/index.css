@@ -111,3 +111,7 @@ box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.155);
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
   border-right: 0px solid rgba(0, 0, 0, 0.12) !important;
 }
+
+.alif-main-footer{
+  z-index: 9999999999999999 !important;
+}

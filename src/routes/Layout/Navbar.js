@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import aliflogo from 'assets/image/aliflogo.svg'
+import aliflogo from 'assets/image/aliflogo.PNG'
 import { Avatar, Badge,   Button, ClickAwayListener, Grow,   MenuItem, MenuList, Paper, Popper  } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
@@ -94,7 +94,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className='flex items-center justify-center mt-2'>
-                    <img src={aliflogo} alt='loading' />
+                    <img src={aliflogo} alt='loading' className='w-32 h-10' />
                 </div>
                 <div className="relative flex items-center justify-between ">
                     
@@ -114,14 +114,14 @@ const Navbar = () => {
                     {/*  */}
                     <ul className="  items-center hidden space-x-8 lg:flex mr-3">
 
-
+{/* 
                         <form className="relative mx-auto w-max text-white">
                             <input type="search"
                                 className="peer cursor-pointer relative z-10 h-12 w-12   bg-transparent   outline-none focus:w-full   " />
                             <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
-                        </form>
+                        </form> */}
                         <li>
                             <Link to="/my-cart">
                                 <Badge color="secondary" badgeContent={count}>
@@ -339,24 +339,21 @@ const Navbar = () => {
                                                     </svg>
                                                 </Link>
                                             </li>
-
-
                                         </ul>
                                         <ul className="flex justify-between items-center  space-x-8 lg:flex mt-6">
-                                            <form className="relative  w-max ">
+                                            {/* <form className="relative  w-max ">
                                                 <input type="search"
                                                     className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-8 outline-none focus:w-full focus:cursor-text focus:border-rose-300 focus:pl-16 focus:pr-4" />
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                 </svg>
-                                            </form>
+                                            </form> */}
 
-                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg " onClick={(e)=> {
+                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg ml-7 " onClick={(e)=> {
                             handleLangChange(e)
                         }} >
                                                 <option selected className="text-slate-900" value="en"> EN</option>
                                                 <option value="gr">GR</option>
-
                                             </select>
                                         </ul>
                                     </nav>

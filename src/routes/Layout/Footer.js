@@ -87,13 +87,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-10'>
-
-                    <div className=' text-white flex justify-between mx-7 font-arial text-2xl font-bold pb-12'>
-                        <h4>  2023. All rights reserved.</h4>
-                        <h4>ZWIWI</h4>
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -101,3 +95,15 @@ const Footer = () => {
 };
 
 export default Footer;
+
+export const MainFooter = () =>{
+    return(
+        <div    className='mt-32 fixed bottom-0 w-full bg-black z-50 pt-5 alif-main-footer' style={{ zIndex: 9999 }}>
+
+                    <div className=' text-white flex justify-between mx-7 font-arial text-2xl font-bold pb-5'>
+                        <h4>  2023. All rights reserved.</h4>
+                        <h4>ZWIWI</h4>
+                    </div>
+                </div>
+    )
+}
