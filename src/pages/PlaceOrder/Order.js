@@ -11,6 +11,7 @@ const Order = () => {
     const [toggler,setToggler] = useState(false)
     const user = useSelector(state => state.reducer.user)
     const [order, setOrder] = useState([])
+    const [address,setAddress] = useState({})
     const getProduct = JSON.parse(localStorage.getItem("checkCart"));
     const { id } = useParams();
     useEffect(() => {
@@ -28,7 +29,8 @@ const Order = () => {
 
     const Registerapi = async (values) => {
         // setLoader(true)
-        console.log(values);
+        setAddress(values)
+     
         try {
             // const res = await axios.post(
             //     `/user/register`, values);
@@ -54,8 +56,10 @@ const Order = () => {
         
     },[toggler])
    
-  const handleClose = () => setOpen(false);
-
+  const handleClose = () => {
+    setToggler(false)
+    setOpen(false)};
+       
     return (
         <div className='mt-44 container-sk'>
             <div className='grid md:grid-cols-2 grid-cols-1 gap-x-6'>
@@ -85,7 +89,7 @@ const Order = () => {
                                     <td class="px-4 py-2">  </td>
                                     <td class="px-4 py-2">
                                         Subtotal  </td>
-                                    <td class="px-4 py-2">
+                                    <td class="px-4 py-2 text-red-500">
                                         {totalPrice}
                                     </td>
                                 </tr>
@@ -93,7 +97,7 @@ const Order = () => {
                                     <td class="px-4 py-2">  </td>
                                     <td class="px-4 py-2">
                                          total (includes vat)  </td>
-                                    <td class="px-4 py-2">
+                                    <td class="px-4 py-2 text-red-500">
                                         {totalPrice*12/8}
                                     </td>
                                 </tr>
@@ -102,19 +106,26 @@ const Order = () => {
 
                     </div>
                     <div className='flex justify-center'>
-                        <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button>
+                      {
+                        address?.email ?   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button> :   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>{
+                            toast.success("please fill the address fild")
+                        }}>place order</button>
+                      }
                     </div>
                 </div>
             </div>
-            {
+               {
                  toggler && <Modal
                  open={open}
-                 onClose={handleClose}
+               
                  aria-labelledby="modal-modal-title"
                  aria-describedby="modal-modal-description"
                >
                   <div>
-                  <Stripe order={order}/>
+                  <Stripe order={order} address={address} handleClose={handleClose}/>
+                 <div  >
+               
+                 </div>
                   </div>
                </Modal>
                 

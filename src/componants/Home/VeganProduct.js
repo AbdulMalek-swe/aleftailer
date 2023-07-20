@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import img from 'assets/image/BAG 4.png'
 import img1 from 'assets/new.svg'
 import { Button1 } from 'componants/Common/Button/Button';
 import axios from 'apiService/axios';
-
+import { Link } from 'react-router-dom';
+ 
 const VeganProduct = () => {
   const [vegan,setVegan] = useState([])
   useEffect(()=>{
@@ -12,7 +12,7 @@ const VeganProduct = () => {
       setVegan(res?.data?.result)
     })
   },[])
-  console.log(vegan);
+   
   return (
     <>
       <div className='container-sk py-7'>
@@ -27,18 +27,19 @@ const VeganProduct = () => {
               </div>
             </div>
             <div>
-              <img src={img} alt='loading' className='w-full h-96' />
+              <img src={vegan[0]?.veganImage}  alt='loading' className='w-full h-96' />
             </div>
           </div>
         </div>
         <div className='py-7'>
       <div className='grid md:grid-cols-3 grid-cols-1 gap-x-6'>
-        {
+        {/* {
           vegan.slice(1,4).map((item,index)=><ProductsCard key={index} item={item}/>)
         }
-         
-
+          */}
+     
       </div>
+      
     </div>
         
         <Leather/>
@@ -52,34 +53,63 @@ const VeganProduct = () => {
 export default VeganProduct;
 
 export const ProductsCard = ({item}) => {
+  const [vegan,setVegan] = useState([])
+  useEffect(()=>{
+    axios.get('/vegan')
+    .then(res=>{
+      setVegan(res?.data?.result)
+    })
+  },[])
   return (
-  
+   <div className='container-sk'>
+     <div className='grid md:grid-cols-3 grid-cols-1 gap-x-6 mt-7'> 
+    {
+      vegan.slice(1,4).map((item,index)=><div className='flex justify-center' key={item._id}>
+      <div className='rounded-lg text-center p-4 alif-cart-btn'>
         <div className='flex justify-center'>
-          <div className='rounded-lg shadow-md text-center p-4'>
-            <div className='flex justify-center'>
-              <img src={item?.veganImage} alt='loading...' className='h-8 w-8 rounded-full ' />
-            </div>
-            <h1 className='mb-3 font-arial text-2xl uppercase py-1 font-bold'>{item?.veganHeader} </h1>
-            <p className='font-arial text-justify leading-5'> {item?.veganDescription}</p>
-          </div>
+          <img src={item?.veganImage} alt='loading...' className='h-8 w-8 rounded-full ' />
         </div>
-       
+        <h1 className='mb-3 font-arial text-2xl uppercase py-1 font-bold'>{item?.veganHeader} </h1>
+        <p className='font-arial text-justify leading-5'> {item?.veganDescription}</p>
+      </div>
+    </div>)
+    }
+        
+       </div>
+   </div>
   )
 }
 
 export const Leather = () => {
   return (
-   
-      <div className='relative flex justify-center items-center w-full py-7'>
-        <img src={img1} alt='loading' className='w-full border-1' />
-        <div className='absolute grid grid-cols-2 gap-x-2 '>
-          <div></div>
+   <div>
+    <div className='grid md:grid-cols-2 grid-cols-1 items-center gap-5 py-7'>
+       <div>
+       <img src={img1} alt='loading' className='w-full border-1' />
+       </div>
+        <div className='md:ml-20 '>
+          
           <div>
             <h1 className='my-2 font-arial text-2xl uppercase text-left'>The new generation of leather</h1>
             <button className='bg-black text-white px-3 py-1 rounded'>Learn More</button>
           </div>
         </div>
       </div>
+ <div className='relative flex justify-center items-center w-full py-7'>
+        <img src={img1} alt='loading' className='w-full border-1' />
+        <div className='absolute grid grid-cols-2 gap-x-2 '>
+          <div></div>
+          <div>
+            <Link>
+            <button className='md:ml-20 bg-black text-white px-3 py-1 rounded'>Visit Our Site</button>
+            </Link>
+            
+          </div>
+        </div>
+      </div>
+      
+   </div>
+     
  
   )
 }

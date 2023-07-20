@@ -14,7 +14,7 @@ import {
 //   import { addUserActions } from "../../redux/features/addUser/addUserSlice";
   import { useNavigate } from "react-router-dom";
   import { useSelector } from "react-redux";
-  const CheckoutForm = ({ amount }) => {
+  const CheckoutForm = ({ amount,handleClose }) => {
     const stripe = useStripe();
     const elements = useElements();
   
@@ -109,7 +109,7 @@ import {
       <Backdrop
       sx={{ color: '#D4A934', zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={isLoading}
-      
+       
     >
       <CircularProgress color="inherit" />
     </Backdrop>
@@ -117,8 +117,10 @@ import {
         <h4 className="text-primary2 font-bold font-display text-center md:text-2xl text-xl lg:text-3xl  tracking-wide  pb-5">
           Pay for  
         </h4>
-        <form onSubmit={handleSubmit} className="mt-2  ">
+        <form onSubmit={handleSubmit} className="mt-2 relative ">
+          
           <PaymentElement />
+    
   
           <div className="mt-5 ">
             <Button
@@ -130,6 +132,7 @@ import {
             >
               Pay Now {amount} 
             </Button>
+            <button onClick={handleClose} className="text-white bg-black w-full text-center mt-3 rounded px-5 py-3">cancel</button>
           </div>
         </form>
   

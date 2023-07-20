@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
-import img from 'assets/image/shoes-bags-close-up.jpg'
 import { Button1 } from 'componants/Common/Button/Button';
 import axios from 'apiService/axios';
+import { Link } from 'react-router-dom';
 const Slider = () => {
   const [banner,setBanner] = useState([])
   useEffect(()=>{
@@ -59,7 +59,6 @@ const Slider = () => {
           rewindWithAnimation={false}
           rtl={false}
           shouldResetAutoplay
-  
           sliderclassName=""
           slidesToSlide={1}
           swipeable
@@ -84,7 +83,10 @@ const Slider = () => {
                 <h1 className="text-white  font-black font-arial text-7xl capitalize"> {item.bannerSecondHeader}</h1>
                 <p className='text-orange text-xl italic font-bold font-arial'> Sale Up to {item.discount}% off</p>
                 <div>
+                  <Link to="/shop">
                   <Button1 />
+                  </Link>
+                   
                 </div>
               </div>
             </div>

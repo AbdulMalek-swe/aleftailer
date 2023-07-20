@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -12,7 +12,7 @@ import store from 'rtk/store/store';
 import "react-multi-carousel/lib/styles.css";
 import { useCookies } from 'react-cookie';
 import { getUser } from 'hooks/ProfileGet';
-
+import spinnergf from 'assets/spinnerloading.gif'
 import './i18n'
 function App() {
   const [, , removeCookie] = useCookies(["token"]);
@@ -20,7 +20,12 @@ function App() {
      getUser(); 
   },[removeCookie])
   return (
-    <RouterProvider router={route}/>
+    <Suspense fallback={<div className='flex justify-center items-center'> 
+      <img src={spinnergf} alt='loading...' className='w-36 h-36'/>
+    </div>}>
+       <RouterProvider router={route}/>
+    </Suspense>
+    
   );
 }
 
