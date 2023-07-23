@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
  
 import Home from 'pages/Home/Home';
-import  { MainFooter } from './Footer';
+import  Footer from './Footer';
 
 const AppLayout = () => {
     const {pathname} = useLocation()
@@ -18,7 +18,7 @@ const AppLayout = () => {
             
             <Outlet/>
             <footer>
-            <MainFooter/>
+            <Footer/>
             </footer>
           
         </div>

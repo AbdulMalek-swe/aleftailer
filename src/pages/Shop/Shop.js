@@ -19,6 +19,7 @@ import { FaCartPlus } from 'react-icons/fa';
 const drawerWidth = 240;
 function Shop(props) {
   const { window } = props;
+  
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -73,10 +74,10 @@ function Shop(props) {
      useEffect(()=>{
        localStorage.setItem('pagenumber', page.toString())
      },[page ])
-console.log(price);
+   
 
   return (
-    <Box sx={{ display: 'flex',zIndex:'-1' }}>
+    <Box sx={{ display: 'flex'  }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -84,8 +85,8 @@ console.log(price);
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           boxShadow:'0px 0px 0px 0px rgb(0,0,0,0)',
-          mt:{sm:'124px',lg:'155px'},
-           background:"white",zIndex:'1' 
+          mt:{sm:'132px',lg:'155px',xs:"124px"},
+           background:"white",zIndex:1 
         }}
       >
         <Toolbar>
@@ -100,8 +101,8 @@ console.log(price);
           </IconButton>
           <div className='flex justify-between   w-full'>
                            <div className='flex justify-center items-center gap-x-4'>
-                           <h2 className='font-sans font-normal text-base text-black7'>Color</h2>
-                            <FormControl className='w-40'
+               <h2 className='font-sans font-normal text-base text-black7'>Color</h2>
+                         <FormControl className='w-40'
                             >
                                 <NativeSelect
                                     value={color}
@@ -124,7 +125,7 @@ console.log(price);
                                 </NativeSelect>
                             </FormControl>
                            </div>
-                            <div className='flex items-center gap-x-4 '>
+                            <div className='flex items-center gap-x-4'>
                             <h2 className='font-sans font-normal text-base text-black7'>Showing {currentPage * 10 - 9}–{currentPage * 10} of {count}</h2>
 
                         </div>
@@ -148,7 +149,7 @@ console.log(price);
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth ,mt:{sm:'124px',lg:'155px'}, }, 
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth ,mt:{sm:'124px',lg:'155px',xs:"124px"},zIndex:-1 }, 
           }}
         >
             <PriceRange product={product} setPrice={setPrice}/> 

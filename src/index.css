@@ -115,3 +115,23 @@ box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.155);
 .alif-main-footer{
   z-index: 9999999999999999 !important;
 }
+
+/* multicarousel arrow customize  */
+
+ 
+.react-multiple-carousel__arrow {
+  z-index: 1 !important;
+  
+}
+.react-multiple-carousel__arrow--left{
+  left: 0 !important;
+}
+.react-multiple-carousel__arrow--right{
+  right: 0 !important;
+}
+
+
+/* material ui appbar design change  */
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  z-index: 0 !important;
+}

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import img1 from 'assets/image/BAG 2.png'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { BiSolidShoppingBags } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
-import store from 'rtk/store/store';
-import { addCartActions } from 'rtk/feature/addCart';
 import { Checkbox } from '@mui/material';
 import cartHook from 'hooks/cartHook';
 import { Link } from 'react-router-dom';
@@ -52,12 +49,10 @@ const Cart = () => {
     const isCheck = checkOut.some(items=>items?._id==item?._id)
     if(isCheck){
        const checks = checkOut.filter(items=>items?._id!==item._id);
-       const fillData = cart?.items?.filter(carts=>carts?._id==item?._id)
-        
+      //  const fillData = cart?.items?.filter(carts=>carts?._id==item?._id)
        setCheckOut([...checks])
        console.log(checkOut);
     }
- 
   }
   const sum = checkOut.reduce((accumulator, current) => accumulator + current?.price * current?.quantity, 0);
   const newIds = []

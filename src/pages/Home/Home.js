@@ -13,7 +13,7 @@ const Home = () => {
        <ProductsCard/>
         <TopSell/>
         <Homes/>
-        <Footer/>
+        
     </>
   );
 

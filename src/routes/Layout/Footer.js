@@ -87,7 +87,10 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                
+                <div className='py-5 text-white flex justify-between  font-arial text-2xl font-bold pb-5'>
+                        <h4>  2023. All rights reserved.</h4>
+                        <h4>ZWIWI</h4>
+                    </div>
             </div>
 
         </div>
