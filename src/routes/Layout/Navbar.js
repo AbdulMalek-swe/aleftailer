@@ -9,8 +9,9 @@ import i18next from 'i18next';
 import store from 'rtk/store/store';
 import { addUserActions } from 'rtk/feature/addUserSlice';
 import { useCookies } from 'react-cookie';
-import zIndex from '@mui/material/styles/zIndex';
+ 
 const Navbar = () => {
+    const {t} = useTranslation();
 const [, , removeCookie] = useCookies(["token"]);
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 const [rmv, setRmv] = useState(true)
@@ -71,9 +72,6 @@ anchorRef.current.focus();
 
 prevOpen.current = open;
 }, [open]);
-
-const { t } = useTranslation();
-
 function handleLangChange(lang) {
 i18next.changeLanguage(lang.target.value)
 }
@@ -95,7 +93,10 @@ return (
 
 </div>
 <div>
-<h1 className='text-2xl mx-1 font-arial font-bold'>FREE DELIVERY IN GREECE</h1>
+<h1 className='text-2xl mx-1 font-arial font-bold uppercase'>
+     
+    {t('nav.f1')}
+    </h1>
 </div>
 <div>
 <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,20 +181,19 @@ sx={{zIndex:'1'}}
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
+                    className='capitalize'
                 >
-                    <MenuItem onClick={handleClose}>  <Link
-                        to="/register"
+                    
+                    {
+                        ['/register','/login'].map((item,index)=>
+                        <MenuItem onClick={handleClose}
+                         className='capitalize'>  <Link
+                        to= {item}
                         className={navLink1}
                     >
-                        Sign Up
-                    </Link></MenuItem>
-                    <MenuItem onClick={handleClose}>  <Link
-                        to="/login"
-                        className={navLink1}
-                    >
-                        Sign In
-                    </Link></MenuItem>
-
+                       {t(`nav.s${index+1}`)}
+                    </Link></MenuItem>)
+                    }
                 </MenuList>
             </ClickAwayListener>
         </Paper>
@@ -250,7 +250,7 @@ sx={{ zIndex: 9999 }}
                             to="/wishlist"
                             className={navLink1}
                         >
-                            Profile
+                             {t('nav.p1')}
                         </Link>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>   <Link

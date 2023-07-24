@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { FaCartPlus } from 'react-icons/fa';
  import {BiSolidShoppingBags} from 'react-icons/bi';
+ import FilterListIcon from '@mui/icons-material/FilterList';
 const drawerWidth = 240;
 function Shop(props) {
   const { window } = props;
@@ -97,7 +98,12 @@ function Shop(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' },background:'red' }}
           >
-            <MenuIcon  sx={{ color:'black' }} />
+            {/* <MenuIcon  sx={{ color:'black' }} /> */}
+         
+            <div>
+            <FilterListIcon sx={{ color:'black' }}/>  
+            <span className='text-black mx-2'>filter</span>
+            </div>
           </IconButton>
           <div className='flex justify-between   w-full'>
                            <div className='flex justify-center items-center gap-x-4'>

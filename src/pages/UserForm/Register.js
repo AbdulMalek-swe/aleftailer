@@ -6,7 +6,9 @@ import { ErrorMessage, Field,   Formik } from 'formik';
  
 import axios from 'apiService/axios';
 import Spinner from 'componants/Common/Spinner/Spinner';
+import { useTranslation } from 'react-i18next';
 const Register = () => {
+  const {t} = useTranslation()
   const [loader, setLoader] = useState(false);
   const Registerapi = async (values) => {
     setLoader(true)
@@ -43,7 +45,7 @@ const Register = () => {
               {/* register field code here using formik */}
               <div className=' mr-20 ml-20 lg:ml-20 lg:mr-20 md:ml-8 md:mr-8 '>
                 <div className='text-center'>
-                  <h1 className='mb-4 font-bold font-5xl font-sans text-black leading-10'>CREATE ACCOUNT</h1>
+                  <h1 className='mb-4 font-bold font-5xl font-sans text-black leading-10 uppercase'> {t("sign.s1")}</h1>
                   <p className='font-2xl text-left mb-4 font-arial text-black font-normal leading-5'>By creating an account with our store, you will be able to move through the checkout process faster, view and track your orders in your account and more.</p>
                 </div>
                 <Formik
@@ -103,10 +105,11 @@ const Register = () => {
 
                     /* and other goodies */
                   }) => (
-                    <form onSubmit={handleSubmit}  >
+                    <form onSubmit={handleSubmit}   className='capitalize'>
                       <div className="mb-4">
                         <label htmlFor="firstName" className="block text-xl font-normal text-black leading-4">
-                          First Name<span className="text-red-500">*</span>
+                          {t('sign.first')}
+                          <span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="text"
@@ -122,7 +125,8 @@ const Register = () => {
                       </div>
                       <div className="mb-4">
                         <label htmlFor="lastName" className="block text-xl font-normal text-black leading-4">
-                          Last Name<span className="text-red-500">*</span>
+                        {t('sign.last')}
+                           <span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="text"
@@ -137,7 +141,7 @@ const Register = () => {
                       </div>
                       <div className="mb-4">
                         <label htmlFor="contactNumber" className="block text-xl font-normal text-black leading-4">
-                          Phone Number<span className="text-red-500">*</span>
+                        {t('sign.phone')}<span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="text"
@@ -152,7 +156,7 @@ const Register = () => {
                       </div>
                       <div className="mb-4">
                         <label htmlFor="email" className="block text-xl font-normal text-black leading-4">
-                          Email<span className="text-red-500">*</span>
+                        {t('sign.email')}<span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="email"
@@ -168,7 +172,7 @@ const Register = () => {
                       {/* password code  */}
                       <div className="mb-4">
                         <label htmlFor="password" className="block text-xl font-normal text-black leading-4">
-                          Password<span className="text-red-500">*</span>
+                        {t('sign.pass')}<span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="password"
@@ -184,7 +188,7 @@ const Register = () => {
                       {/* confirm password  */}
                       <div className="mb-4">
                         <label htmlFor="confirm_password" className="block text-xl font-normal text-black leading-4">
-                          Confirm Password<span className="text-red-500">*</span>
+                        {t('sign.cpass')}<span className="text-red-500">*</span>
                         </label>
                         <Field
                           type="password"

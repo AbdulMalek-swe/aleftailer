@@ -4,7 +4,34 @@
         "1": "shop",
         "2":"made to order",
         "3": "inside alif",
-        "4":"contact"
+        "4":"contact",
+        "f1":"FREE DELIVERY IN GREECE",
+        "s1":"Sign up",
+        "s2":"Sign in",
+        "p1":"Profile",
+        "c1":"cart"
+    },
+    "sign":{
+        "s1":"CREATE ACCOUNT",
+        "first":"First Name",
+        "last":"Last Name",
+        "phone":"Phone Number",
+        "email":"Email",
+        "pass":"Password",
+        "cpass":"Confirm Password",
+        "login":"Login",
+        "acount":"Already Have an Account?"
+    } ,
+     "contact":{
+        "contact":"CONTACT US",
+        "address":"ADDRESS",
+        "addressDetails":"Greece, Athens, Kolokotroni 9, Chalandri 152 33",
+        "mail":"MAIL",
+        "call":"CALL US",
+        "shedule":"SHEDULE",
+        "name":"Full Name",
+        "email":"e-mail",
+        "message":"Message"
         
     }
     

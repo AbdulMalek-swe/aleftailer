@@ -9,7 +9,7 @@ const HeroSection = () => {
         < >
             <Slider />
             <Navbar />
-            <Modal />
+            {/* <Modal /> */}
         </ >
     );
 };
