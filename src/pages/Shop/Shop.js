@@ -5,7 +5,7 @@ import axios from 'apiService/axios';
 import { useSelector } from 'react-redux';
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 import { Link  } from 'react-router-dom';
-import {   Drawer,  Pagination,   Slider,   Toolbar, Typography } from '@mui/material';
+import {   Drawer,  Pagination,   Slider,   Toolbar  } from '@mui/material';
 import { likeUpdates } from 'hooks/likeUpdate';
 import cartHook from 'hooks/cartHook';
 import PropTypes from 'prop-types';
@@ -13,12 +13,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+ 
 import { FaCartPlus } from 'react-icons/fa';
  import {BiSolidShoppingBags} from 'react-icons/bi';
  import FilterListIcon from '@mui/icons-material/FilterList';
+import { useTranslation } from 'react-i18next';
 const drawerWidth = 240;
 function Shop(props) {
+  const {t} = useTranslation()
   const { window } = props;
   
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -107,7 +109,7 @@ function Shop(props) {
           </IconButton>
           <div className='flex justify-between   w-full'>
                            <div className='flex justify-center items-center gap-x-4'>
-               <h2 className='font-sans font-normal text-base text-black7'>Color</h2>
+               <h2 className='font-sans font-normal text-base text-black7'>  {t("shop.color")}</h2>
                          <FormControl className='w-40'
                             >
                                 <NativeSelect
@@ -132,7 +134,7 @@ function Shop(props) {
                             </FormControl>
                            </div>
                             <div className='flex items-center gap-x-4'>
-                            <h2 className='font-sans font-normal text-base text-black7'>Showing {currentPage * 10 - 9}–{currentPage * 10} of {count}</h2>
+                            <h2 className='font-sans font-normal text-base text-black7'>  {t("shop.show1")} {currentPage * 10 - 9}–{currentPage * 10}   {t("shop.show2")} {count}</h2>
 
                         </div>
                         </div>
@@ -158,7 +160,7 @@ function Shop(props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth ,mt:{sm:'124px',lg:'155px',xs:"124px"},zIndex:-1 }, 
           }}
         >
-            <PriceRange product={product} setPrice={setPrice}/> 
+            <PriceRange product={product} setPrice={setPrice} t={t}/> 
           <CategoryField product={product} setCategory={setCategory} count={count}/>
         </Drawer>
         <Drawer
@@ -170,7 +172,7 @@ function Shop(props) {
           }}
           open
         >
-           <PriceRange product={product} setPrice={setPrice}/> 
+           <PriceRange product={product} setPrice={setPrice} t={t}/> 
           <CategoryField product={product} setCategory={setCategory} count={count}/>
          
         </Drawer>
@@ -262,7 +264,7 @@ export const CategoryField = ({product,setCategory,count}) => {
         </>
     )
 }
-export const PriceRange = ({product,setPrice})=>{
+export const PriceRange = ({product,setPrice,t})=>{
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -285,7 +287,7 @@ const highestPrice = Math.max(...product.map(product => product.price));
   
   return (
   <div className='alif-cart-btn mx-4 px-4 py-3 font-arail'>
-    <h1 className='text-2xl text-semibold py-2 px-4'>Price Range</h1>
+    <h1 className='text-2xl text-semibold py-2 px-4'>   {t("shop.pricerange")}</h1>
      <Slider
        getAriaLabel={() => 'Minimum distance shift'}
        value={value1}

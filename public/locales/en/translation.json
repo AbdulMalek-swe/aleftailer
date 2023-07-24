@@ -33,6 +33,19 @@
         "email":"e-mail",
         "message":"Message"
         
+    },
+    "shop":{
+        "shop":"Continue Shopping",
+        "pricerange":"Price Range",
+        "show1":"Showing",
+        "show2":"of",
+        "color":"color"
+    },
+    "cart":{
+        "carttotal":"Cart Totals",
+        "shipping":"Shipping",
+        "includevat":"Order Total ( Includes V.A.T )"
+       
     }
     
 }

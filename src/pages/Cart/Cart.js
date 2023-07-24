@@ -5,10 +5,12 @@ import { useSelector } from 'react-redux';
 import { Checkbox } from '@mui/material';
 import cartHook from 'hooks/cartHook';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Cart = () => {
+  const {t} = useTranslation()
   const initialItems = () => {
     const localStorageData = localStorage.getItem('checkCart');
     if (!localStorageData) {
@@ -88,7 +90,7 @@ const Cart = () => {
                 <h2 className='font-sans font-semibold text-xl'>€{item?.price}</h2>
 
                 <p className='flex justify-between  text-base font-normal'>
-                  <span className=' '>Order Total ( Includes V.A.T )</span>
+                  <span className=' '> {t('cart.includevat')} </span>
                   <span className='bg-black text-white font-sans font-semibold text-xl rounded-lg py-1'>
                     <button className='pr-5 pl-2 text-2xl' onClick={() => removeFromCartHandle(item._id)}>-</button>
                     <span>{item.quantity}</span>
@@ -101,17 +103,17 @@ const Cart = () => {
         </div>
         <div className='md:fixed md:top-[32%]  md:right-10 md:order-2 order-1 '>
           <div className='shadow-lg font-sans p-5 rounded-lg'>
-            <h2 className=' my-5 font-semibold text-4xl'>Cart Totals</h2>
+            <h2 className=' my-5 font-semibold text-4xl'> {t('cart.carttotal')}</h2>
             <p className='flex justify-between font-light'>
-              <span className='block text-base'>Subtotal ( Includes V.A.T )</span>
+              <span className='block text-base'>{t('cart.includevat')}</span>
               <span className='font-normal text-xl block'>€229.00</span>
             </p>
             <hr className='h-[1px] bg-gray-300 my-7' />
-            <h2 className='text-xl font-semibold'>Shipping</h2>
+            <h2 className='text-xl font-semibold'>{t('cart.shipping')}</h2>
             <p className='block text-base my-7'>Estimate shipping costs after checkout</p>
 
             <p className='flex justify-between font-light mb-7'>
-              <span className='block text-base'>Order Total ( Includes V.A.T )</span>
+              <span className='block text-base'> {t('cart.includevat')}</span>
               <span className='font-normal text-xl block'>€{sum}</span>
             </p>
           </div>
@@ -120,7 +122,7 @@ const Cart = () => {
           </div>
           <div className='text-center mb-5'>
            <Link to="/order">
-           <button className='font-semibold font-sans text-xl w-full shadow-lg text-black rounded-lg py-4 text-center hover:bg-black8 flex items-center justify-center'> <BiSolidShoppingBags /> <span className='mx-2 capitalize' > continue shopping </span><BiSolidShoppingBags /></button>
+           <button className='font-semibold font-sans text-xl w-full shadow-lg text-black rounded-lg py-4 text-center hover:bg-black8 flex items-center justify-center'> <BiSolidShoppingBags /> <span className='mx-2 capitalize' > {t('shop.shop')} </span><BiSolidShoppingBags /></button>
            </Link>
           </div>
         </div>
