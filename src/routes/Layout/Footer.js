@@ -62,10 +62,10 @@ const Footer = () => {
                         <button className='mt-5 text-2xl font-arial font-normal '>Terms & Conditions</button> <br />
                     </div>
                     <div className='lg:mx-auto'>
-                        <h2 className='text-3xl font-arial font-semibold'>STORE</h2>
-                        <button className='mt-5 text-2xl font-arial font-normal '> Greece,Athens</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '> Kolokotroni 9</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '> Chalandri 152 33</button> <br />
+                        <h2 className='text-3xl font-arial font-semibold'>{t("footerstore.store")}</h2>
+                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area1")}</button> <br />
+                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area2")}</button> <br />
+                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area3")}</button> <br />
                         <h2 className='text-3xl font-arial font-semibold mt-7'>SOCIAL</h2>
                         <div className='flex justify-around'>
                             <div className='flex flex-col justify-center items-center'>

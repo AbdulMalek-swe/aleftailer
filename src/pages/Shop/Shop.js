@@ -161,7 +161,7 @@ function Shop(props) {
           }}
         >
             <PriceRange product={product} setPrice={setPrice} t={t}/> 
-          <CategoryField product={product} setCategory={setCategory} count={count}/>
+          <CategoryField product={product} setCategory={setCategory} count={count} t={t}/>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -173,7 +173,7 @@ function Shop(props) {
           open
         >
            <PriceRange product={product} setPrice={setPrice} t={t}/> 
-          <CategoryField product={product} setCategory={setCategory} count={count}/>
+          <CategoryField product={product} setCategory={setCategory} count={count} t={t}/>
          
         </Drawer>
       </Box>
@@ -242,7 +242,7 @@ Shop.propTypes = {
 export default Shop;
 
 
-export const CategoryField = ({product,setCategory,count}) => {
+export const CategoryField = ({product,setCategory,count,t}) => {
     return (
         <>
       
@@ -253,8 +253,8 @@ export const CategoryField = ({product,setCategory,count}) => {
                 <span className='text-gray-400 font-medium'> ({count}) </span>
             </p>
              {
-                ['shoulder','clutches','handbags','pouch','buckets','pouches','vegan'].map(items=> <p className='mt-2 mb-1 mr-4 ml-3 border-b-4 border-dotted flex justify-between capitalize'>
-                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory( items)}>{ items}</button>
+                ['shoulder','clutches','handbags','pouch','buckets','pouches','vegan'].map((items,index)=> <p className='mt-2 mb-1 mr-4 ml-3 border-b-4 border-dotted flex justify-between capitalize' key={index}>
+                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory( items)}>    {t(`shop.items.${items}`)}  </button>
                 <span className='text-gray-400 font-medium'> ({ product.filter(item=>item.category===items).length})</span>
             </p> 
             )

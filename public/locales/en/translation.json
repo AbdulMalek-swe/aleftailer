@@ -39,13 +39,20 @@
         "pricerange":"Price Range",
         "show1":"Showing",
         "show2":"of",
-        "color":"color"
+        "color":"color",
+        "items":["shoulder","clutches","handbags","pouch","buckets","pouches","vegan"]
     },
     "cart":{
         "carttotal":"Cart Totals",
         "shipping":"Shipping",
         "includevat":"Order Total ( Includes V.A.T )"
        
+    },
+    "footerstore":{
+        "store":"STORE",
+        "area1":"Greece,Athens",
+        "area2":"Kolokotroni 9",
+        "area3":"Chalandri 152 33"
     }
     
 }

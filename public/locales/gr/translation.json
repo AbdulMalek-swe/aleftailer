@@ -35,13 +35,20 @@
         "pricerange":"Εύρος τιμών",
         "show1":"Εμφάνιση",
         "show2":"από",
-        "color":"Χρώμα"
+        "color":"Χρώμα",
+        "items":["shoulder","clutches","handbags","pouch","buckets","pouches","vegan"]
     },
     "cart":{
         "carttotal":"Σύνολο",
         "shipping":"Μεταφορικά",
         "includevat":"Σύνολο ( συμπεριλαμβάνεται 24% Φ.Π.Α)"
-       
+    },
+    "footerstore":{
+        "store":"Κατάστημα",
+        "area1":"Ελλάδα, Αθήνα",
+        "area2":"Κολοκοτρώνη 9",
+        "area3":"Χαλάνδρι, 15233"
     }
+     
    
   } 
