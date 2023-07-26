@@ -5,10 +5,10 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 import { useSelector } from 'react-redux';
 import cartHook from 'hooks/cartHook';
+import { likeUpdates } from 'hooks/likeUpdate';
 const ProductDetails = () => {
     const user = useSelector(state=>state.reducer.user);
     const {result} = useLoaderData();
-    const isLiked = user.wishlist.some(item=>item._id===result._id)
     const cart = useSelector(state=>state.reducer.cart)
     const {addToCartHandle} = cartHook()
     useEffect(()=>{
@@ -20,7 +20,9 @@ const ProductDetails = () => {
        const newItem = {...e,quantity:Number(quantity)};
        addToCartHandle(newItem)
       }
-      console.log(result.productImage);
+      const likeUpdate = (id) => {
+        likeUpdates(id,user)
+    }
     return (
         <div className='mt-60 container-sk mb-7 '>
             <div className='grid md:grid-cols-2 grid-cols-1 gap-6'>
@@ -34,18 +36,18 @@ const ProductDetails = () => {
                     <h1 className=' text-2xl '>{result?.name}</h1>
                     <p className='my-7 text-xs'>item No. {result?.skwNo}</p>
                     <h1 className='font-bold text-xl font-arial '> € {result?.price}</h1>
-                    <p className='my-7 text-[18px]'> {result?.description} </p>
+                    
+                    <div className='my-7 text-[18px]'  dangerouslySetInnerHTML={{ __html: result?.description }}/> 
                         <div className='my-12 flex'>
                           <p className='text-xl mx-3'>Quantity</p>
                           <input type='number' className='py-2 w-1/4 outline' min="1" defaultValue={1} onChange={(e)=>{
                            setQuantity(e.target.value)
                           }}/>
                           <div className='mx-3'>
-                            
-                      
-                            {
-                                isLiked? <FavoriteSharpIcon className='  bg-white text-red-500' /> : <FavoriteSharpIcon className=' bg-gray-500 text-white' />
-                            }
+                             
+                             <button className=' ' onClick={() => likeUpdate(result._id)} >
+                                    { user.wishlist.some(items=>items._id===result._id) ? <FavoriteSharpIcon className='  bg-white text-red-500' />  :<FavoriteSharpIcon className=' bg-gray-500 text-white' />}
+                                </button>
                             </div>
                         </div>
                     <div className='text-center mb-5'>

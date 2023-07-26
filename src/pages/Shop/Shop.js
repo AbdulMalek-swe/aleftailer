@@ -62,7 +62,6 @@ function Shop(props) {
     const likeUpdate = (id) => {
         console.log(id);
         likeUpdates(id,user)
-         
     }
     useEffect(() => {
         axios.post('/banner', { bannerFirstHeader: 'abdudl', bannerSecondHeader: 'thiisd ', discount: 1 })
@@ -187,7 +186,9 @@ function Shop(props) {
                     <div className='grid lg:grid-cols-3 grid-cols-2  gap-4'  >
                     </div>
                     <div className='grid lg:grid-cols-4 md:grid-cols-3  sm:grid-cols-2 grid-cols-1 gap-4 mt-5'  >
-                        {product.sort(sortingFunction).map(item =>  <div className='  relative text-black dark:text-white bg-white   mx-2 alif-cart' key={item._id}>
+                        {product.sort(sortingFunction).map(item =>
+                          
+                          <div className='  relative text-black dark:text-white bg-white   mx-2 alif-cart' key={item._id}>
                             <div className='relative'  >
                                 <img src={item?.productImage[0]} alt="loading" className='w-full h-72 z-10' />
                                <Link to= {user.email?'/shop':'/login'}>
@@ -215,7 +216,9 @@ function Shop(props) {
                             <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2 my-2'    onClick={()=>addToCartHandle(item)}><FaCartPlus/> <span>ADD TO CART</span></button>
                             </div>
                            
-                        </div>  )}
+                        </div> 
+                        
+                        )}
 
                     </div>
                     <div className='flex justify-center my-4'>
@@ -254,7 +257,7 @@ export const CategoryField = ({product,setCategory,count,t}) => {
             </p>
              {
                 ['shoulder','clutches','handbags','pouch','buckets','pouches','vegan'].map((items,index)=> <p className='mt-2 mb-1 mr-4 ml-3 border-b-4 border-dotted flex justify-between capitalize' key={index}>
-                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory( items)}>    {t(`shop.items.${items}`)}  </button>
+                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory( items)}>    {t(`shop.items.${index}`)}  </button>
                 <span className='text-gray-400 font-medium'> ({ product.filter(item=>item.category===items).length})</span>
             </p> 
             )

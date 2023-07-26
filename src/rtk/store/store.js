@@ -1,11 +1,13 @@
 import {   configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from 'redux';
 import addCart from "rtk/feature/addCart";
+import addLanguSlice from "rtk/feature/addLanguSlice";
 import addUserSlice from "rtk/feature/addUserSlice";
  
 const rootReducer = combineReducers({
    user:addUserSlice,
-   cart:addCart
+   cart:addCart,
+   lang:addLanguSlice
 });
 
 //configure store

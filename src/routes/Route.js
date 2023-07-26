@@ -14,6 +14,7 @@ import MakeOrder from "pages/MakeToOrder/MakeOrder/MakeOrder";
 import Appointment from "pages/MakeToOrder/Appointment/Appointment";
 import Stripe from "pages/Payment/StripeForm";
 import Order from "pages/PlaceOrder/Order";
+import ProtectedRoute from "./protectedRoute/protectedRoute";
  
 const { createBrowserRouter } = require("react-router-dom");
 const route = createBrowserRouter([
@@ -54,11 +55,11 @@ const route = createBrowserRouter([
           },
           {
                path:"/wishlist",
-               element:<Wishlist/>
+               element:<ProtectedRoute><Wishlist/></ProtectedRoute> 
           },
           {
                path:"/my-cart",
-               element:<Cart/>
+               element:<ProtectedRoute><Cart/></ProtectedRoute> 
           },
           {
                path:"/contact",
