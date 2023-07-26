@@ -197,14 +197,14 @@ function Shop(props) {
                                 </button>
                                </Link>
                             </div>
-                            <p className='absolute top-0 left-0 bg-orange2 w-40 h-48 px-2' style={{ clipPath: 'polygon(29% 0, 38% 6%, 29% 12%, 0 12%, 0 0)' }}>Sale!</p>
+                            <p className='absolute top-0 left-0 bg-orange2 w-40 h-48 px-2' style={{ clipPath: 'polygon(29% 0, 38% 6%, 29% 12%, 0 12%, 0 0)' }}> -{item.offerRate}%</p>
                           <div className='mx-2'>
                           <Link to={`/product/${item?._id}`} className='mt-5 text-black hover:underline hover:text-red-600 '>
                 <h1 className='mt-5'>  {item.name} {item.offerCategory}</h1>
                             </Link>
                             <p className=' text-[15px] mb-1 text-red-600'>€ {item.offerPrice}</p>
                             <p className=' text-[15px] mb-1 text-black  '> <span className='line-through text-gray-400  '>€ {item.price} </span>
-                            <span className='ml-12'> -10%</span>
+                           
                             </p>
                           </div>
                             
