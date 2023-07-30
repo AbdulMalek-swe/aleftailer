@@ -15,6 +15,7 @@ import Appointment from "pages/MakeToOrder/Appointment/Appointment";
 import Stripe from "pages/Payment/StripeForm";
 import Order from "pages/PlaceOrder/Order";
 import ProtectedRoute from "./protectedRoute/protectedRoute";
+import Profile from "pages/UserForm/Profile";
  
 const { createBrowserRouter } = require("react-router-dom");
 const route = createBrowserRouter([
@@ -29,6 +30,10 @@ const route = createBrowserRouter([
           {
                path:"/login",
                element: <PublicRoute> <Login/></PublicRoute>
+          },
+          {
+               path:"/profile",
+               element: <ProtectedRoute> <Profile/></ProtectedRoute>
           },
           {
                path:"/shop",

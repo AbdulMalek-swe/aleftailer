@@ -13,11 +13,16 @@ import "react-multi-carousel/lib/styles.css";
 import { useCookies } from 'react-cookie';
 import { getUser } from 'hooks/ProfileGet';
 import spinnergf from 'assets/spinnerloading.gif'
-import './i18n'
+//  import './i18n'
 function App() {
   const [, , removeCookie] = useCookies(["token"]);
   useEffect(()=>{
-     getUser(); 
+   
+   
+     const t =  getUser(); 
+     if(t!==undefined){
+      removeCookie("token")
+     }
   },[removeCookie])
   return (
     <Suspense fallback={<div className='flex justify-center items-center'> 

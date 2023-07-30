@@ -40,12 +40,13 @@ const TopSell = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const sortingFunction = (a,b)=>b.prodcutSell-a.productSell
     
     async function producteFetch() {
         axios.get(`/product/all`)
             .then(res => {
                    console.log(res.data.result);
-                   const result = res.data.result.sort(sortingFunction).slice(0,10) 
+                   const result = res.data.result.slice(0,15) 
                    console.log(result);
                     setProduct(result)
             })
@@ -84,7 +85,7 @@ const TopSell = () => {
     }
 
   };
-  const sortingFunction = (a,b)=>b.prodcutSell-a.productSell
+
   return (
     <div className='container-sk mt-12'>
       <h1 className='text-center mb-10 font-arial text-4xl'>TOP SELLING</h1>

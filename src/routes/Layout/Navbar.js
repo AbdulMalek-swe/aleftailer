@@ -243,7 +243,7 @@ sx={{ zIndex: 9999 }}
                 >
                     <MenuItem onClick={handleClose} sx={{zIndex:10}}>
                         <Link
-                            to="/wishlist"
+                            to="/profile"
                             className={navLink1}
                         >
                              {t('nav.p1')}
