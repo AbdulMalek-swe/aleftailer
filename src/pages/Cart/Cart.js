@@ -101,7 +101,7 @@ const Cart = () => {
             </div>)
           }
         </div>
-        <div className='md:fixed md:top-[32%]  md:right-10 md:order-2 order-1 '>
+        <div className='border  md:order-2 order-1 '>
           <div className='shadow-lg font-sans p-5 rounded-lg'>
             <h2 className=' my-5 font-semibold text-4xl'> {t('cart.carttotal')}</h2>
             <p className='flex justify-between font-light'>

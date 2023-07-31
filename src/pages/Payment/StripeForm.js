@@ -38,9 +38,7 @@ export default  function Stripe({order,address,handleClose}) {
     clientSecret: paymentIntent?.client_secret,
     appearance,
   };
-  
-  let d = Promise.reject(stripePromise)
-  // console.log(d);
+ 
   return (
     <div className="mt-52"> 
       <Elements stripe={stripePromise} options={options}>

@@ -1,5 +1,5 @@
 import axios from "apiService/axios";
-import { useCookies } from "react-cookie";
+ 
 import { addUserActions } from "rtk/feature/addUserSlice";
 import store from "rtk/store/store";
 
@@ -14,7 +14,7 @@ export const getUser= async() => {
             store.dispatch(addUserActions.addUser(res.data.data))
         } catch (error) {
             console.log(error.message);
-            return error.message;
+           
         }
 };
 

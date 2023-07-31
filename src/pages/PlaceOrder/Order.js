@@ -1,7 +1,9 @@
 import { Modal } from '@mui/material';
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import axios from 'apiService/axios';
 import { ErrorMessage, Field, Formik } from 'formik';
 import Stripe from 'pages/Payment/StripeForm';
+import PayPalPayment from 'pages/Payment/paypal/PayPalPayment';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -106,11 +108,11 @@ const Order = () => {
 
                     </div>
                     <div className='flex justify-center'>
-                      {
-                        address?.email ?   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button> :   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>{
-                            toast.success("please fill the address fild")
+                      
+                           <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button> :   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>{
+                            toast.error("please fill the address fild")
                         }}>place order</button>
-                      }
+                       
                     </div>
                 </div>
             </div>
@@ -120,11 +122,15 @@ const Order = () => {
                
                  aria-labelledby="modal-modal-title"
                  aria-describedby="modal-modal-description"
+                 className='overflow-y-scroll'
                >
-                  <div>
-                  <Stripe order={order} address={address} handleClose={handleClose}/>
-                 <div  >
+                  <div >
                
+                
+                   <PayPalPayment order={order} address={address} handleClose={handleClose}/>
+                
+                 <div  >
+                 
                  </div>
                   </div>
                </Modal>

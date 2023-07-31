@@ -27,67 +27,67 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 text-white justify-center  place-content-center gap-3'>
-                    <div className=' lg:mx-auto'>
-                        <h2 className='text-2xl font-arial font-normal'>WE CREATE BAGS TO CARRY OUR WORLDS</h2>
+                <div className='mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 text-white md:justify-center  md:place-content-center gap-3'>
+                    <div className='md:text-left text-center'>
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'>WE CREATE BAGS TO CARRY OUR WORLDS</h2>
                         {
                             ["/", "/shop", "/make-order", "/insider-alif", "/contact"].map((item, index) =>
                                 <Link
                                     to={item}
                                     key={index}
                                 >
-                                    <button className='mt-5 text-3xl font-arial font-semibold capitalize'>{t(`nav.${index}`)}</button>
+                                    <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal text-left'>{t(`nav.${index}`)}</button>
                                     <br />
 
                                 </Link>
                             )
                         }
                     </div>
-                    <div className='lg:text-left'>
-                        <h2 className='text-3xl font-arial font-semibold'> SERVICES</h2>
-                        <button className='mt-5 text-2xl font-arial font-normal '>Contact Us</button> <br />
+                    <div className='md:text-left text-center'>
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'> SERVICES</h2>
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Contact Us</button> <br />
                          
-                        <button className='mt-5 text-2xl font-arial font-normal text-left'>Book an Appointment</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Payment Methods </button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Orders and Shipping</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Return and Refunds</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Track YOUR oRDER</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Return Form</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>FAQ</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal text-left'>Book an Appointment</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Payment Methods </button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Orders and Shipping</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Return and Refunds</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Track YOUR oRDER</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Return Form</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>FAQ</button> <br />
                     </div>
-                    <div className=' lg:mx-auto'>
-                        <h2 className='text-3xl font-arial font-semibold'>LEGAL & PRIVACY</h2>
-                        <button className='mt-5 text-2xl font-arial font-normal '>Privacy Policies</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Cookie Policy</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '>Terms & Conditions</button> <br />
+                    <div className=' md:text-left text-center'>
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'>LEGAL & PRIVACY</h2>
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Privacy Policies</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Cookie Policy</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Terms & Conditions</button> <br />
                     </div>
-                    <div className='lg:mx-auto'>
-                        <h2 className='text-3xl font-arial font-semibold'>{t("footerstore.store")}</h2>
-                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area1")}</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area2")}</button> <br />
-                        <button className='mt-5 text-2xl font-arial font-normal '> {t("footerstore.area3")}</button> <br />
-                        <h2 className='text-3xl font-arial font-semibold mt-7'>SOCIAL</h2>
+                    <div className='md:text-left text-center'>
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'>{t("footerstore.store")}</h2>
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '> {t("footerstore.area1")}</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '> {t("footerstore.area2")}</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '> {t("footerstore.area3")}</button> <br />
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold mt-7'>SOCIAL</h2>
                         <div className='flex justify-around'>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'>  <BsMessenger className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'>  <BsMessenger className=' rounded-full   text-base md:text-lg lg:text-xl xl:text-2xl' /></p>
                             </div>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'><SendRoundedIcon className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'><SendRoundedIcon className=' rounded-full   text-base md:text-lg lg:text-xl xl:text-2xl' /></p>
                             </div>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'><FacebookRoundedIcon className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'><FacebookRoundedIcon className=' rounded-full   text-base md:text-lg lg:text-xl xl:text-2xl' /></p>
                             </div>
                             <div className='flex flex-col justify-center items-center'>
                                 <p className='-mb-1'>...</p>
-                                <p className='rounded-full'> <AiFillTwitterCircle className=' rounded-full   text-2xl' /></p>
+                                <p className='rounded-full'> <AiFillTwitterCircle className=' rounded-full   text-base md:text-lg lg:text-xl xl:text-2xl' /></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='py-5 text-white flex justify-between  font-arial text-2xl font-bold pb-5'>
+                <div className='py-5 text-white flex justify-between  font-arial text-base md:text-lg lg:text-xl xl:text-2xl font-bold pb-5'>
                         <h4>  2023. All rights reserved.</h4>
                         <h4>ZWIWI</h4>
                     </div>
@@ -103,7 +103,7 @@ export const MainFooter = () =>{
     return(
         <div    className='mt-32 fixed bottom-0 w-full bg-black z-50 pt-5 alif-main-footer' style={{ zIndex: 9999 }}>
 
-                    <div className=' text-white flex justify-between mx-7 font-arial text-2xl font-bold pb-5'>
+                    <div className=' text-white flex justify-between mx-7 font-arial text-base md:text-lg lg:text-xl xl:text-2xl font-bold pb-5'>
                         <h4>  2023. All rights reserved.</h4>
                         <h4>ZWIWI</h4>
                     </div>

@@ -185,12 +185,12 @@ function Shop(props) {
         <div className='mt-36'>
                     <div className='grid lg:grid-cols-3 grid-cols-2  gap-4'  >
                     </div>
-                    <div className='grid lg:grid-cols-4 md:grid-cols-3  sm:grid-cols-2 grid-cols-1 gap-4 mt-5'  >
+                    <div className='grid xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 grid-cols-1 lg:gap-8 gap-4 mt-5'  >
                         {product.sort(sortingFunction).map(item =>
                           
-                          <div className='  relative text-black dark:text-white bg-white   mx-2 alif-cart' key={item._id}>
+                          <div className='shadow-md hover:shadow-lg duration-300 h-fit rounded-md border border-gray-400/30 relative text-black dark:text-white    mx-2   p-5' key={item._id}>
                             <div className='relative'  >
-                                <img src={item?.productImage[0]} alt="loading" className='w-full h-72 z-10' />
+                                <img src={item?.productImage[0]} alt="loading" className='object-cover w-full lg:h-52 md:h-40 h-32' />
                                <Link to= {user.email?'/shop':'/login'}>
                                <button className='absolute bottom-0 right-0 bg-[#00000033]  w-8 h-8' onClick={() => likeUpdate(item._id)} >
                                     { user.wishlist.some(items=>items._id===item._id) ? <FavoriteSharpIcon className='  text-red-500' /> : <FavoriteSharpIcon className='  text-white'  text-4xl/>}
@@ -213,7 +213,7 @@ function Shop(props) {
                            <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2'    ><BiSolidShoppingBags/> <span>BUY NOW</span></button>
                            </Link>
 
-                            <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2 my-2'    onClick={()=>addToCartHandle(item)}><FaCartPlus/> <span>ADD TO CART</span></button>
+                            <button className='bg-black text-white px-3 py-2 rounded hover:underline text-center w-full flex items-center justify-center gap-x-2 mt-3 '    onClick={()=>addToCartHandle(item)}><FaCartPlus/> <span>ADD TO CART</span></button>
                             </div>
                            
                         </div> 
