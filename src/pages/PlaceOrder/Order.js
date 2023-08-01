@@ -2,13 +2,14 @@ import { Modal } from '@mui/material';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import axios from 'apiService/axios';
 import { ErrorMessage, Field, Formik } from 'formik';
-import Stripe from 'pages/Payment/StripeForm';
 import PayPalPayment from 'pages/Payment/paypal/PayPalPayment';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-
+import countryList from 'react-select-country-list';
+import Select from 'react-select';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+ 
 const Order = () => {
     const [toggler,setToggler] = useState(false)
     const user = useSelector(state => state.reducer.user)
@@ -29,26 +30,26 @@ const Order = () => {
         }
     }, [])
 
-    const Registerapi = async (values) => {
-        // setLoader(true)
-        setAddress(values)
+    const Registerapi = async (values) => {}
+    //     // setLoader(true)
+    //     setAddress(values)
      
-        try {
-            // const res = await axios.post(
-            //     `/user/register`, values);
-            // const { status, data } = res;
-            // console.log("submit data ", res);
-            // if (status === 200) {
-            //     // setLoader(false)
-            //     // toast.dismiss(loading);
-            //     toast.success(data?.message);
-            // }
-        } catch (error) {
-            // toast.dismiss(loading)
-            toast.error(error?.response?.data?.error);
-            // setLoader(false) 
-        }
-    };
+    //     try {
+    //         // const res = await axios.post(
+    //         //     `/user/register`, values);
+    //         // const { status, data } = res;
+    //         // console.log("submit data ", res);
+    //         // if (status === 200) {
+    //         //     // setLoader(false)
+    //         //     // toast.dismiss(loading);
+    //         //     toast.success(data?.message);
+    //         // }
+    //     } catch (error) {
+    //         // toast.dismiss(loading)
+    //         toast.error(error?.response?.data?.error);
+    //         // setLoader(false) 
+    //     }
+    // };
     const totalPrice = order.reduce((accumulator, currentProduct) => accumulator + currentProduct.price*currentProduct.quantity, 0);
     const [open, setOpen] = React.useState(false);
     useEffect(()=>{
@@ -63,8 +64,8 @@ const Order = () => {
     setOpen(false)};
        
     return (
-        <div className='mt-44 container-sk'>
-            <div className='grid md:grid-cols-2 grid-cols-1 gap-x-6'>
+        <div className='mt-44 container-sk mb-24'>
+            <div className='grid md:grid-cols-2 grid-cols-1 gap-x-6 place-content-center items-center '>
                 <div>
                     <CustomerInfo Registerapi={Registerapi} user={user} />
                 </div>
@@ -100,7 +101,7 @@ const Order = () => {
                                     <td class="px-4 py-2">
                                          total (includes vat)  </td>
                                     <td class="px-4 py-2 text-red-500">
-                                        {totalPrice*12/8}
+                                        {totalPrice +(totalPrice*24)/100}
                                     </td>
                                 </tr>
                             </tbody>
@@ -109,9 +110,7 @@ const Order = () => {
                     </div>
                     <div className='flex justify-center'>
                       
-                           <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button> :   <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>{
-                            toast.error("please fill the address fild")
-                        }}>place order</button>
+                           <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={()=>setToggler(true)}>place order</button>  
                        
                     </div>
                 </div>
@@ -125,8 +124,6 @@ const Order = () => {
                  className='overflow-y-scroll'
                >
                   <div >
-               
-                
                    <PayPalPayment order={order} address={address} handleClose={handleClose}/>
                 
                  <div  >
@@ -143,16 +140,31 @@ const Order = () => {
 export default Order;
 
 export const CustomerInfo = ({ Registerapi, user }) => {
-    console.log(user);
+     
+    const [country, setCountry] = useState('Greece');
+    const [region, setRegion] = useState('');
+  
+    const selectCountry = (val) => {
+      setCountry(val);
+      setRegion(''); // Reset the selected region when changing the country
+    };
+  
+    const selectRegion = (val) => {
+      setRegion(val);
+    };
     return (
         <>
             <div className='flex justify-center  '>
+            
                 {/* register field code here using formik */}
                 <div className=' w-full'>
                     <div className='text-center'>
                         <h1 className='mb-4 font-bold font-5xl font-sans text-black leading-10'>Customer Information</h1>
                     </div>
-                    <Formik
+                   
+                    <CountryDropdown value={country} onChange={(val) => selectCountry(val)} />
+      <RegionDropdown country={country} value={region} onChange={(val) => selectRegion(val)} />
+                    {/* <Formik
                         enableReinitialize
                         initialValues={{
                             firstName: user?.first_name || "",
@@ -172,15 +184,12 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                             else if (!values.contactNumber) {
                                 error.contactNumber = "Please enter your phone number";
                             }
-
                             else if (!values.email) {
                                 error.email = "Please enter your email";
                             }
-
                             else if (!values.address) {
                                 error.address = "Please enter confirm password";
                             }
-
                             return error;
                         }}
                         onSubmit={(values, { resetForm }) => {
@@ -196,7 +205,7 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                             handleSubmit,
                             isSubmitting,
 
-                            /* and other goodies */
+                        
                         }) => (
                             <form onSubmit={handleSubmit} className=' w-full'  >
                                 <div className="mb-4  ">
@@ -260,9 +269,7 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                                     />
                                     <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
                                 </div>
-                                {/* password code  */}
-
-                                {/* confirm password  */}
+                             
                                 <div className="mb-4">
                                     <label htmlFor="address" className="block text-xl font-normal text-black leading-4">
                                         Address <span className="text-red-500">*</span>
@@ -283,7 +290,7 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                                 </button>
                             </form>
                         )}
-                    </Formik>
+                    </Formik> */}
 
 
                 </div>

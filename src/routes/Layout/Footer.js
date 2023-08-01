@@ -6,26 +6,28 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { BsMessenger } from 'react-icons/bs';
 import { AiFillTwitterCircle } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 const Footer = () => {
     const { t } = useTranslation();
-
+    const user = useSelector(state => state.reducer.user)
     return (
         <div className='bg-black z-100' style={{ zIndex: 9999 }}>
             <div className='container-sk'>
                 <div className='grid sm:grid-cols-2 grid-cols-1'>
                     <div className='sm:block hidden'>
-                        <img src={img} alt='loading...' />
+                        {/* <img src={img} alt='loading...' /> */}
                     </div>
-                    <div className='text-white'>
-                        <div className='text-center'>
-                            <h1 className='font-bold font-arial italic text-base'>SUBSCRIBE TO OUR NEWSLETTER</h1>
-                            <p className='font-italianno text-xl '>Get Notified For Our Promotions</p>
-                        </div>
-                        <div className='flex justify-between border-b-2 px-5 pb-3 mt-5'>
-                            <input placeholder='Enter Your Email Here' className='border-0 bg-transparent text-gray-500 placeholder-gray-500 outline-none' />
-                            <p className='text-gray-500'>SUBSCRIBE</p>
-                        </div>
-                    </div>
+                    {
+                        !user.isSubscribe && <div className='text-white'>
+                            <div className='text-center'>
+                                <h1 className='font-bold font-arial italic text-base'>{t('footerEmail.e1')}</h1>
+                                <p className='font-italianno text-xl '>{t('footerEmail.e2')}</p>
+                            </div>
+                            <div className='flex justify-between border-b-2 px-5 pb-3 mt-5'>
+                                <input placeholder={t('footerEmail.e3')}className='border-0 bg-transparent text-gray-500 placeholder-gray-500 outline-none' />
+                                <p className='text-gray-500 uppercase'>{t('footerEmail.e4')}</p>
+                            </div>
+                        </div>}
                 </div>
                 <div className='mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 text-white md:justify-center  md:place-content-center gap-3'>
                     <div className='md:text-left text-center'>
@@ -44,22 +46,20 @@ const Footer = () => {
                         }
                     </div>
                     <div className='md:text-left text-center'>
-                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'> SERVICES</h2>
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Contact Us</button> <br />
-                         
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal text-left'>Book an Appointment</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Payment Methods </button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Orders and Shipping</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Return and Refunds</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Track YOUR oRDER</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Return Form</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>FAQ</button> <br />
+                        <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'> {t('footerService.service')}  </h2>
+                   {
+                    ['Contact Us','Book an Appointment','Payment Methods','Orders and Shipping','Return and Refunds','Track YOUR oRDER','Return Form','FAQ'].map((item,index)=> <div key={index}>
+                    <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal  capitalize'>{t(`footerService.items.${index}`)} </button><br/>
+                    </div> 
+                     )
+                   }
+                  
                     </div>
                     <div className=' md:text-left text-center'>
                         <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'>LEGAL & PRIVACY</h2>
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Privacy Policies</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '> {t("footerService.policy")}</button> <br />
                         <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Cookie Policy</button> <br />
-                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>Terms & Conditions</button> <br />
+                        <button className='mt-5 text-base md:text-lg lg:text-xl xl:text-2xl font-arial font-normal '>{t("footerService.terms")}</button> <br />
                     </div>
                     <div className='md:text-left text-center'>
                         <h2 className='text-lg md:text-xl lg:text-2xl font-arial font-semibold'>{t("footerstore.store")}</h2>
@@ -88,9 +88,9 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='py-5 text-white flex justify-between  font-arial text-base md:text-lg lg:text-xl xl:text-2xl font-bold pb-5'>
-                        <h4>  2023. All rights reserved.</h4>
-                        <h4>ZWIWI</h4>
-                    </div>
+                    <h4>  2023. All rights reserved.</h4>
+                    <h4>ZWIWI</h4>
+                </div>
             </div>
 
         </div>
@@ -99,14 +99,14 @@ const Footer = () => {
 
 export default Footer;
 
-export const MainFooter = () =>{
-    return(
-        <div    className='mt-32 fixed bottom-0 w-full bg-black z-50 pt-5 alif-main-footer' style={{ zIndex: 9999 }}>
+export const MainFooter = () => {
+    return (
+        <div className='mt-32 fixed bottom-0 w-full bg-black z-50 pt-5 alif-main-footer' style={{ zIndex: 9999 }}>
 
-                    <div className=' text-white flex justify-between mx-7 font-arial text-base md:text-lg lg:text-xl xl:text-2xl font-bold pb-5'>
-                        <h4>  2023. All rights reserved.</h4>
-                        <h4>ZWIWI</h4>
-                    </div>
-                </div>
+            <div className=' text-white flex justify-between mx-7 font-arial text-base md:text-lg lg:text-xl xl:text-2xl font-bold pb-5'>
+                <h4>  2023. All rights reserved.</h4>
+                <h4>ZWIWI</h4>
+            </div>
+        </div>
     )
 }

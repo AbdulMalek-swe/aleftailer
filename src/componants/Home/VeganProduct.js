@@ -90,7 +90,7 @@ export const Leather = () => {
         <div className='md:ml-20 '>
           
           <div>
-            <h1 className='my-2 font-arial text-2xl uppercase text-left'>The new generation of leather</h1>
+            <h1 className='my-2 font-arial uppercase text-left text-xl md:text-2xl lg:text-3xl xl:text-5xl'>The new generation of leather</h1>
             <button className='bg-black text-white px-3 py-1 rounded'>Learn More</button>
           </div>
         </div>

@@ -65,7 +65,7 @@ const Cart = () => {
    }
   return (
     <div className='container-sk mt-52 mb-7'>
-      <h1 className='text-center shadow-lg py-5 text-6xl font-sans font-bold uppercase leading-10 rounded-lg'>your cart</h1>
+      <h1 className='text-center shadow-lg py-5 font-sans font-bold uppercase leading-10 rounded-lg text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>your cart</h1>
       <hr className='h-[1px] bg-gray-300 my-7' />
       <div className='grid md:grid-cols-5 gap-x-4 justify-center place-content-center grid-cols-1'>
         <div className='col-span-3 md:order-1 order-2'>

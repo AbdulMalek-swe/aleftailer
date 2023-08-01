@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import aliflogo from 'assets/image/aliflogo.PNG'
+import aliflogo from 'assets/newlogo'
 import { Avatar, Badge,   Button, ClickAwayListener, Grow,   MenuItem, MenuList, Paper, Popper  } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,6 @@ import { useCookies } from 'react-cookie';
 import { addLanguActions } from 'rtk/feature/addLanguSlice';
  
 const Navbar = () => {
-    const [langu,setLangu]= useState("")
     
     const {t} = useTranslation();
 const [, , removeCookie] = useCookies(["token"]);
@@ -21,8 +20,8 @@ const [rmv, setRmv] = useState(true)
 const user = useSelector(state => state.reducer.user)
 const lang = useSelector(state => state.reducer.lang)
 console.log(lang);
-const navLink1 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans text-xl nav-link-alif nav-link-ltr-alif hover:text-white"
-const navLink2 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans text-xl   hover:text-white hover:underline"
+const navLink1 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans  nav-link-alif nav-link-ltr-alif hover:text-white text-base md:text-lg lg:text-xl"
+const navLink2 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans hover:text-white hover:underline text-base md:text-lg lg:text-xl"
 const [navbarColor, setNavbarColor] = useState('text-white8 bg-black8 fixed w-full top-0 z-10');
 const cart = useSelector(state => state.reducer.cart);
 const count = cart?.items?.reduce((accumulator, current) => accumulator + current.quantity, 0);
@@ -97,7 +96,7 @@ return (
 
 </div>
 <div>
-<h1 className='text-2xl mx-1 font-arial font-bold uppercase'>
+<h1 className='text-2xl mx-1 font-arial font-bold uppercase text-base md:text-lg lg:text-xl'>
      
     {t('nav.f1')}
     </h1>
@@ -110,7 +109,7 @@ return (
 </div>
 </div>
 <div className='flex items-center justify-center mt-2'>
-<img src={aliflogo} alt='loading' className='w-32 h-10' />
+<img src={aliflogo} alt='loading'   />
 </div>
 <div className="relative flex items-center justify-between ">
 

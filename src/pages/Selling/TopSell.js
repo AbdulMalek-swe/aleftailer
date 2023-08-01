@@ -88,7 +88,7 @@ const TopSell = () => {
 
   return (
     <div className='container-sk mt-12'>
-      <h1 className='text-center mb-10 font-arial text-4xl'>TOP SELLING</h1>
+      <h1 className='text-center mb-10 font-arial text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>TOP SELLING</h1>
       <Carousel
         additionalTransfrom={0}
         arrows

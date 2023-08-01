@@ -252,7 +252,7 @@ export const CategoryField = ({product,setCategory,count,t}) => {
             <div className='alif-cart-btn mx-3 mt-4'>
             <h1 className='ml-3 font-sans font-semibold text-xl mt-5'>CATEGORIES</h1>
             <p className='mt-2 mb-1 mr-4 ml-3 border-b-4 border-dotted flex justify-between capitalize'>
-                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory('')}>All </button>
+                <button   className='text-black  font-normal capitalize' onClick={()=>setCategory('')}> {t("shop.all")}</button>
                 <span className='text-gray-400 font-medium'> ({count}) </span>
             </p>
              {

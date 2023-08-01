@@ -40,7 +40,8 @@
         "show1":"Showing",
         "show2":"of",
         "color":"color",
-        "items":["shoulder","clutches","handbags","pouch","buckets","pouches","vegan"]
+        "items":["shoulder","clutches","handbags","pouch","buckets","pouches","vegan"],
+        "all":"all"
     },
     "cart":{
         "carttotal":"Cart Totals",
@@ -48,11 +49,24 @@
         "includevat":"Order Total ( Includes V.A.T )"
        
     },
+    "footerEmail":{
+       "e1":"subscribe to our newsletter",
+       "e2":"get notified for our promotion",
+       "e3":"enter your email here ",
+       "e4":"subscribe"  
+    },
     "footerstore":{
         "store":"STORE",
         "area1":"Greece,Athens",
         "area2":"Kolokotroni 9",
         "area3":"Chalandri 152 33"
+    },
+    "footerService":{
+        "service":"SERVICES",
+        "items":["Contact Us","Book an Appointment","Payment Methods","Orders and Shipping","Return and Refunds","Track YOUR oRDER","Return Forms","FAQ"],
+        "policy":"Privacy Policies",
+        "terms":"Terms & Conditions"
+        
     }
     
 }

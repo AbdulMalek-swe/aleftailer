@@ -3,7 +3,7 @@ import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import axios from 'apiService/axios';
 import React, { useEffect, useState } from 'react';
 
-const PayPalPayment = ({handleClose}) => {
+const PayPalPayment = ({handleClose,order}) => {
     const [paymentIntent, setPaymentIntent] = useState(null);
     const [loading,setLoader] = useState(false)
     useEffect(()=>{
@@ -24,12 +24,7 @@ const PayPalPayment = ({handleClose}) => {
            console.log(data);
         return axios
           .post("/my-server/create-paypal-order", {
-            cart: [
-              {
-                sku: "skw-001",
-                quantity: 12,
-              },
-            ],
+            cart: order
           })
           .then((response) => response.data.id);
       };
