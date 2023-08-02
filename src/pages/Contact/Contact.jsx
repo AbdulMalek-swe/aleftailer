@@ -157,12 +157,12 @@ return (
                     </div>
                     <h1 className='font-semibold text-xl mb-7 uppercase'> {t('contact.shedule')} </h1>
                     <p className='mb-7 text-xs'>
-                        Mon:12:00-21.00<br/>
-                        Tu:12:00-21.00<br/>
-                        Wed:12:00-21.00<br/>
-                        Th:12:00-21.00<br/>
-                        Fri:12:00-21.00<br/>
-                        Sat:10:00-15.00 </p>
+                        Mon:12:00-21.00  <br/>
+                        Tu:12:00-21.00  <br/>
+                        Wed:12:00-21.00  <br/>
+                        Th:12:00-21.00  <br/>
+                        Fri:12:00-21.00 <br/>
+                        Sat:10:00-15.00  </p>
                     <div className='flex  justify-center gap-x-2'>
 
                     </div>
@@ -171,11 +171,8 @@ return (
         </div>
 
     </div>
-    <div className='mt-52  '>
-<iframe width="100%" height="100%" className="  inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.1858736222644!2d88.32363647459844!3d24.823316346744367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fba7ca108e72f9%3A0xeec7a6739a3ff211!2sRohanpur%20Pourashava!5e0!3m2!1sen!2sbd!4v1685129134333!5m2!1sen!2sbd"
-
-></iframe>
-    
+    <div className='mt-12 w-full   lg:h-96 md:h-72 h-52'>
+<iframe width="100%" height="100%" className="   " frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.9919503118617!2d23.7299410121236!3d37.97731717181793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd3c0eea5cab%3A0x38339e8dc1621ea9!2sKolokotroni%209%2C%20152%2033%2C%20Athina%20105%2062%2C%20Greece!5e0!3m2!1sen!2sbd!4v1690947871761!5m2!1sen!2sbd"></iframe>
 </div>
 </div>
 
