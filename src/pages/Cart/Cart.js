@@ -69,10 +69,10 @@ const Cart = () => {
       <hr className='h-[1px] bg-gray-300 my-7' />
       <div className='grid md:grid-cols-5 gap-x-4 justify-center place-content-center grid-cols-1'>
         <div className='col-span-3 md:order-1 order-2'>
-          <div className='flex justify-around bg-black text-white rounded-lg py-3 font-sans font-semibold text-xl leading-6 capitalize mb-7'>
-            <button>items</button>
-            <button>details</button>
-            <button>quantity</button>
+          <div className='flex justify-around bg-black text-white rounded-lg py-3 font-sans font-semibold lg:text-xl text-base leading-6 capitalize mb-7'>
+            <button> {t('cart.c1')}</button>
+            <button> {t('cart.c2')}</button>
+            <button> {t('cart.c3')}</button>
           </div>
           {
             cart?.items?.map((item, index) => <div className='grid grid-cols-3 shadow-lg rounded-lg p-5 gap-4 my-5' key={index}>

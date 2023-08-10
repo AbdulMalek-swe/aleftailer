@@ -158,8 +158,8 @@ loader && <div className='flex items-center justify-center h-screen'> <Spinner/>
                         )}
                     </Formik>
                     <div className=" rounded-xl text-black8 text-center   bg-white flex justify-between">
-                        <p className='text-black8'>Already Have no Account?</p>
-                        <Link to="/register" className="font-semibol font-arial  text-black hover:underline">Register</Link>
+                        <p className='text-black8'>{t('sign.alreadyno')}</p>
+                        <Link to="/register" className="font-semibol font-arial  text-black hover:underline">{t('sign.registers')}</Link>
                     </div>
                 </div>
             </div>

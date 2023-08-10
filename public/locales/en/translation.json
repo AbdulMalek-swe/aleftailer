@@ -9,10 +9,24 @@
         "s1":"Sign up",
         "s2":"Sign in",
         "p1":"Profile",
-        "c1":"cart"
+        "c1":"cart",
+        "top1":"TOP SELLING"
+    },
+     "modal": {
+      "offer1":"ENTER YOUR EMAIL AND GET",
+      "offer2":"25% OFF",
+      "offer3":"YOUR FIRST PURCHASE!",
+      "enter":"Εnter",
+      "nothanks":"No Thanks",
+      "dontshow":"Do not show it anymore."
     },
     "sign":{
         "s1":"CREATE ACCOUNT",
+        "s2":"By creating an account with our store, you will be able to move through the checkout process faster, view and track your orders in your account and more.",
+        "already":"Already Have An Account?",
+        "login1":"Log-in",
+        "alreadyno":"Already Have no Account?",
+        "registers":"Register",
         "first":"First Name",
         "last":"Last Name",
         "phone":"Phone Number",
@@ -20,7 +34,12 @@
         "pass":"Password",
         "cpass":"Confirm Password",
         "login":"Login",
-        "acount":"Already Have an Account?"
+        "acount":"Already Have an Account?",
+        "l1":"Fast and easy check out",
+        "l2":"Easy access to your order history and status",
+        "l3":"Even faster checkout for future purchases",
+        "l4":"FReceive our FREE e-newsletter with exclusive discounts and offers",
+        "l5":"You can easily unsubscribe at any time"
     } ,
      "contact":{
         "contact":"CONTACT US",
@@ -46,7 +65,10 @@
     "cart":{
         "carttotal":"Cart Totals",
         "shipping":"Shipping",
-        "includevat":"Order Total ( Includes V.A.T )"
+        "includevat":"Order Total ( Includes V.A.T )",
+        "c1":"items",
+        "c2":"details",
+        "c3":"quantity"
        
     },
     "footerEmail":{

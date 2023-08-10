@@ -38,7 +38,7 @@ const Register = () => {
       }
       {
         !loader &&
-        <div className="h-scree md:flex md:mt-[156px]">
+        <div className="h-scree flex  lg:mt-40 mt-32">
        
           <div className="flex items-center justify-center    md:w-1/2 h-full    ">
             <div className='flex justify-center'>
@@ -46,7 +46,7 @@ const Register = () => {
               <div className=' mr-20 ml-20 lg:ml-20 lg:mr-20 md:ml-8 md:mr-8 '>
                 <div className='text-center'>
                   <h1 className='mb-4 font-bold font-5xl font-sans text-black leading-10 uppercase'> {t("sign.s1")}</h1>
-                  <p className='font-2xl text-left mb-4 font-arial text-black font-normal leading-5'>By creating an account with our store, you will be able to move through the checkout process faster, view and track your orders in your account and more.</p>
+                  <p className='font-2xl text-left mb-4 font-arial text-black font-normal leading-5'> {t('sign.s2')}</p>
                 </div>
                 <Formik
                   enableReinitialize
@@ -107,7 +107,7 @@ const Register = () => {
                   }) => (
                     <form onSubmit={handleSubmit}   className='capitalize'>
                       <div className="mb-4">
-                        <label htmlFor="firstName" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="firstName" className="block lg:text-xl text-base font-normal text-black leading-4">
                           {t('sign.first')}
                           <span className="text-red-500">*</span>
                         </label>
@@ -124,7 +124,7 @@ const Register = () => {
                         <ErrorMessage name="firstName" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="mb-4">
-                        <label htmlFor="lastName" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="lastName" className="block lg:text-xl text-base font-normal text-black leading-4">
                         {t('sign.last')}
                            <span className="text-red-500">*</span>
                         </label>
@@ -140,7 +140,7 @@ const Register = () => {
                         <ErrorMessage name="lastName" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="mb-4">
-                        <label htmlFor="contactNumber" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="contactNumber" className="block lg:text-xl text-base font-normal text-black leading-4">
                         {t('sign.phone')}<span className="text-red-500">*</span>
                         </label>
                         <Field
@@ -155,7 +155,7 @@ const Register = () => {
                         <ErrorMessage name="contactNumber" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
                       <div className="mb-4">
-                        <label htmlFor="email" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="email" className="block lg:text-xl text-base font-normal text-black leading-4">
                         {t('sign.email')}<span className="text-red-500">*</span>
                         </label>
                         <Field
@@ -171,7 +171,7 @@ const Register = () => {
                       </div>
                       {/* password code  */}
                       <div className="mb-4">
-                        <label htmlFor="password" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="password" className="block lg:text-xl text-base font-normal text-black leading-4">
                         {t('sign.pass')}<span className="text-red-500">*</span>
                         </label>
                         <Field
@@ -187,7 +187,7 @@ const Register = () => {
                       </div>
                       {/* confirm password  */}
                       <div className="mb-4">
-                        <label htmlFor="confirm_password" className="block text-xl font-normal text-black leading-4">
+                        <label htmlFor="confirm_password" className="block lg:text-xl text-base font-normal text-black leading-4">
                         {t('sign.cpass')}<span className="text-red-500">*</span>
                         </label>
                         <Field
@@ -202,8 +202,8 @@ const Register = () => {
                         <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm mt-1" />
                       </div>
 
-                      <button type="submit" className="bg-black text-white py-2 px-4 rounded-md hover:bg-black8 w-full text-base font-arial font-bold">
-                        Create Account
+                      <button type="submit" className="bg-black text-white py-2 px-4 rounded-md hover:bg-black8 w-full  font-arial font-bold lg:text-xl text-base">
+                        {t("sign.s1")}
                       </button>
 
 
@@ -212,35 +212,35 @@ const Register = () => {
                 </Formik>
 
                 <div className=" rounded-xl text-black8 text-center   bg-white flex justify-between">
-                  <p className='text-black8'>Already Have An Account?</p>
-                  <Link to="/login" className="font-medium text-black hover:underline font-arial text-base">Log-in</Link>
+                  <p className='text-black8'>{t('sign.already')}</p>
+                  <Link to="/login" className="font-medium text-black hover:underline font-arial text-base">  {t('sign.login1')}</Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-signImg lg:block hidden   bg-cover   bg-no-repeat bg-static  h-screen w-1/2  ">
+          <div className="bg-signImg md:block hidden   bg-cover   bg-no-repeat bg-static  h-screen w-1/2  ">
             <div className="w-full h-full   bg-white8 text-left ">
               <div className="mr-20 ml-20 lg:ml-20 lg:mr-20 md:ml-8 md:mr-8 flex items-center    h-full">
-                <div className='font-normal text-black font-sans text-3xl'>
+                <div className='font-normal text-black font-sans xl:text-2xl lg:text-xl text-base'>
                   <div className='flex items-center   mb-4'>
                     <div className="border-t border-gray-600 w-5"></div>
-                    <div className='mx-2.5'> Fast and easy check out  </div>
+                    <div className='mx-2.5'> {t('sign.l1')} </div>
                   </div>
                   <div className='flex items-center   mb-4'>
                     <div className="border-t border-gray-600 w-5"></div>
-                    <div className='mx-2.5'> Easy access to your order history and status</div>
+                    <div className='mx-2.5'> {t('sign.l2')}</div>
                   </div>
                   <div className='flex items-center   mb-4'>
                     <div className="border-t border-gray-600 w-5"></div>
-                    <div className='mx-2.5'> Even faster checkout for future purchases</div>
+                    <div className='mx-2.5'> {t('sign.l3')}</div>
                   </div>
                   <div className='flex items-center   mb-4'>
                     <div className="border-t border-gray-600 w-5"></div>
-                    <div className='mx-2.5'>  Receive our FREE e-newsletter with exclusive discounts and offers</div>
+                    <div className='mx-2.5'>  {t('sign.l4')}</div>
                   </div>
                   <div className='flex items-center   mb-4'>
                     <div className="border-t border-gray-600 w-5"></div>
-                    <div className='mx-2.5'> You can easily unsubscribe at any time</div>
+                    <div className='mx-2.5'> {t('sign.l5')}</div>
                   </div>
                 </div>
               </div>

@@ -1,22 +1,19 @@
 import { Modal } from '@mui/material';
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import axios from 'apiService/axios';
 import { ErrorMessage, Field, Formik } from 'formik';
 import PayPalPayment from 'pages/Payment/paypal/PayPalPayment';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import countryList from 'react-select-country-list';
-import Select from 'react-select';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-
 const Order = () => {
-    const [toggler, setToggler] = useState(false)
     const user = useSelector(state => state.reducer.user)
     const [order, setOrder] = useState([])
     const [address, setAddress] = useState({})
+    const [open, setOpen] = React.useState(false);
     const getProduct = JSON.parse(localStorage.getItem("checkCart"));
     const { id } = useParams();
+   
     useEffect(() => {
         if (id) {
             axios.get(`/product/${id}`)
@@ -29,42 +26,16 @@ const Order = () => {
             setOrder(getProduct)
         }
     }, [])
-
     const Registerapi = async (values) => {  
-        console.log(values);
-    //     // setLoader(true)
-    //     setAddress(values)
-
-    //     try {
-    //         // const res = await axios.post(
-    //         //     `/user/register`, values);
-    //         // const { status, data } = res;
-    //         // console.log("submit data ", res);
-    //         // if (status === 200) {
-    //         //     // setLoader(false)
-    //         //     // toast.dismiss(loading);
-    //         //     toast.success(data?.message);
-    //         // }
-    //     } catch (error) {
-    //         // toast.dismiss(loading)
-    //         toast.error(error?.response?.data?.error);
-    //         // setLoader(false) 
-    //     }
+        setAddress(values)
+        setOpen(true)
     };
     const totalPrice = order.reduce((accumulator, currentProduct) => accumulator + currentProduct.price * currentProduct.quantity, 0);
-    const [open, setOpen] = React.useState(false);
-    useEffect(() => {
-        if (toggler) {
-            setOpen(true)
-        }
-
-    }, [toggler])
-
+   
     const handleClose = () => {
-        setToggler(false)
+        // setToggler(false)
         setOpen(false)
     };
-
     return (
         <div className='mt-44 container-sk mb-24'>
             <div className='grid md:grid-cols-2 grid-cols-1 gap-x-6 place-content-center items-center '>
@@ -82,7 +53,6 @@ const Order = () => {
                                 </tr>
                             </thead>
                             <tbody>
-
                                 {
                                     order.map((item, index) => <tr className='border'>
                                         <td class="px-4 py-2"> {item?.name} </td>
@@ -108,49 +78,44 @@ const Order = () => {
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
                     <div className='flex justify-center'>
-
-                        <button className=' mt-5 w-full bg-black text-white px-5 py-2' onClick={() => setToggler(true)}>place order</button>
-
                     </div>
                 </div>
             </div>
-            {
-                toggler && <Modal
+            <Modal
                     open={open}
-
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                     className='overflow-y-scroll'
                 >
                     <div >
-                        <PayPalPayment order={order} address={address} handleClose={handleClose} />
+                        <PayPalPayment order={order} address={address} handleClose={handleClose}  />
 
                         <div  >
 
                         </div>
                     </div>
                 </Modal>
-
-            }
         </div>
     );
 };
 
 export default Order;
 
-export const CustomerInfo = ({ Registerapi, user }) => {
+export const CustomerInfo = ({ Registerapi, user,setNewAddress }) => {
 
     const [country, setCountry] = useState('Greece');
     const [region, setRegion] = useState('');
-
+  
     const selectCountry = (val) => {
         setCountry(val);
-        setRegion(''); // Reset the selected region when changing the country
+        setRegion(''); // Reset the selected region when changing  
     };
- 
+    const handleAddress = async (value)=>{
+          Registerapi({...value,state:region,country})
+    }
+     
     return (
         <>
             <div className='flex justify-center  '>
@@ -168,8 +133,9 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                             streetAddress: "",
                             aptBuildingHouse: "",
                             city: "",
-                            region:region || "",
-                            country:country||""
+                            region:  "",
+                            country: "",
+                            postal:""
                         }}
                         validate={(values) => {
                             
@@ -191,7 +157,7 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                         }}
                         onSubmit={(values, { resetForm }) => {
                             
-                            Registerapi(values);
+                            handleAddress(values);
                         }}
                     >
                         {({
@@ -202,8 +168,6 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                             handleBlur,
                             handleSubmit,
                             isSubmitting,
-
-
                         }) => (
                             <form onSubmit={handleSubmit} className=' w-full'  >
                                 <div className="mb-4  ">
@@ -268,6 +232,21 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                                     <ErrorMessage name="city" component="div" className="text-red-500 text-sm mt-1" />
                                 </div>
                                 <div className="mb-4">
+                                    <label htmlFor="postal"  className="block text-xl font-normal text-black leading-4">
+                                      Postal Code<span className="text-red-500">*</span>
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        id="postal" 
+                                        name="postal" 
+                                        placeholder="Postal Code"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                    />
+                                    <ErrorMessage name="postal" component="div" className="text-red-500 text-sm mt-1" />
+                                </div>
+                                <div className="mb-4">
                                     <label htmlFor="region" className="block text-xl font-normal text-black leading-4">
                                        state <span className="text-red-500">*</span>
                                     </label>
@@ -292,13 +271,11 @@ export const CustomerInfo = ({ Registerapi, user }) => {
                                 </div>
                                
                                 <button type="submit" className="bg-black text-white py-2 px-4 rounded-md hover:bg-black8 w-full text-base font-arial font-bold">
-                                    Submit
+                                  place order
                                 </button>
                             </form>
                         )}
                     </Formik>
-
-
                 </div>
             </div>
         </>

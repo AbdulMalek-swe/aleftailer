@@ -6,11 +6,11 @@ import Modal from 'componants/HeroSection/Modal';
 
 const HeroSection = () => {
     return (
-        < >
+        <>
             <Slider />
             <Navbar />
-            {/* <Modal /> */}
-        </ >
+            <Modal />
+        </>
     );
 };
 

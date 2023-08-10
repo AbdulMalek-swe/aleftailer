@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import aliflogo from 'assets/newlogo'
+import aliflogo from 'assets/alef 3.png'
 import { Avatar, Badge,   Button, ClickAwayListener, Grow,   MenuItem, MenuList, Paper, Popper  } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useSelector } from 'react-redux';
@@ -12,14 +12,12 @@ import { useCookies } from 'react-cookie';
 import { addLanguActions } from 'rtk/feature/addLanguSlice';
  
 const Navbar = () => {
-    
     const {t} = useTranslation();
 const [, , removeCookie] = useCookies(["token"]);
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 const [rmv, setRmv] = useState(true)
 const user = useSelector(state => state.reducer.user)
 const lang = useSelector(state => state.reducer.lang)
-console.log(lang);
 const navLink1 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans  nav-link-alif nav-link-ltr-alif hover:text-white text-base md:text-lg lg:text-xl"
 const navLink2 = "font-semibold tracking-wide text-white  transition-colors duration-200 font-sans hover:text-white hover:underline text-base md:text-lg lg:text-xl"
 const [navbarColor, setNavbarColor] = useState('text-white8 bg-black8 fixed w-full top-0 z-10');
@@ -28,7 +26,6 @@ const count = cart?.items?.reduce((accumulator, current) => accumulator + curren
 useEffect(() => {
 const handleScroll = () => {
 const position = window.pageYOffset;
- 
 if (position > 100) {
 setRmv(false)
 setNavbarColor('text-white8 bg-black fixed w-full top-0 z-10');
@@ -44,11 +41,9 @@ window.removeEventListener('scroll', handleScroll);
 }, []);
 const [open, setOpen] = React.useState(false);
 const anchorRef = React.useRef(null);
-
 const handleToggle = () => {
 setOpen((prevOpen) => !prevOpen);
 };
-
 const handleClose = (event) => {
 if (anchorRef.current && anchorRef.current.contains(event.target)) {
 return;
@@ -75,16 +70,23 @@ anchorRef.current.focus();
 
 prevOpen.current = open;
 }, [open]);
+const [langus,setLangus] = useState(
+    localStorage.getItem("langu")||"en"
+)
 function handleLangChange(lang) {
-i18next.changeLanguage(lang.target.value)
-// setLangu(lang.target.value)
-store.dispatch(addLanguActions.addLangu())
+
+setLangus(lang.target.value);
+// store.dispatch(addLanguActions.addLangu())
 }
 const handleLogout = async() =>{
 removeCookie("token" )
 store.dispatch(addUserActions.removeUser({}))
 }
- 
+ useEffect(()=>{
+    localStorage.setItem("langu",langus)
+    store.dispatch(addLanguActions.addLangu(langus))
+    i18next.changeLanguage(langus)
+ },[langus])
 return (
 <div className='containe z-50'>
 <div className={navbarColor}>
@@ -367,8 +369,8 @@ className={navLink2}
         <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg ml-7 " onClick={(e)=> {
 handleLangChange(e)
 }} >
-            <option selected className="text-slate-900" value="en"> EN</option>
-            <option value="gr">GR</option>
+            <option  selected={lang.data}  className="text-slate-900" value="en"> EN</option>
+            <option  selected={!lang.data}  value="gr">GR</option>
         </select>
     </ul>
 </nav>

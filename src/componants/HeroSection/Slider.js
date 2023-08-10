@@ -13,7 +13,7 @@ const Slider = () => {
     })
   },[])
   return (
-    <div className=' container-sk  '>
+    <div className=' container-sk mt-52 '>
      <Carousel
           additionalTransfrom={0}
           arrows

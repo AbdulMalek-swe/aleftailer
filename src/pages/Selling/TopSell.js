@@ -10,9 +10,10 @@ import { likeUpdates } from 'hooks/likeUpdate';
 import cartHook from 'hooks/cartHook';
 import { FaCartPlus } from 'react-icons/fa';
 import { BiSolidShoppingBags } from 'react-icons/bi';
+import { useTranslation } from 'react-i18next';
 
 const TopSell = () => {
-
+  const {t} = useTranslation()
   useEffect(() => {
     window.scroll(0, 0)
   }, [])
@@ -22,6 +23,7 @@ const TopSell = () => {
   const [d, setD] = useState(null)
   const { addToCartHandle } = cartHook()
   useEffect(() => {
+
     const handleScroll = () => {
       const position = window.pageYOffset;
       //   setScrollPosition(position);
@@ -92,13 +94,12 @@ const TopSell = () => {
 
   return (
     <div className='container-sk mt-12'>
-      <h1 className='text-center mb-10 font-arial text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>TOP SELLING</h1>
+      <h1 className='text-center mb-10 font-arial text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase'>  {t('nav.top1')}</h1>
       <Carousel
         additionalTransfrom={0}
         arrows
         autoPlaySpeed={2000}
         centerMode={false}
-
         containerclassName="container-with-dots"
         dotListclassName=""
         draggable

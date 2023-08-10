@@ -7,8 +7,13 @@ const addLanguSlices = createSlice({
   initialState: UserData,
   reducers: {
     addLangu: (state, action) => { 
-      state.data = !state.data;
-      
+      if(action.payload==='en'){
+        state.data = true;
+      }
+       else{
+        state.data = false;
+       }
+    
     },
     
   },
