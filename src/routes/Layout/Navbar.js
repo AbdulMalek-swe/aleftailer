@@ -136,6 +136,152 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
+                           {
+                            !user.email && <Link to="/login"  className={navLink1}>Login</Link>
+                           }     
+                            {user?.email && <div className='z-10'>
+                                <Button
+                                    ref={anchorRef}
+                                    id="composition-button"
+                                    aria-controls={open ? 'composition-menu' : undefined}
+                                    aria-expanded={open ? 'true' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleToggle}
+                                >
+                                    <Avatar sx={{ width: 32, height: 32 }} src={user?.profileImg}>
+
+                                    </Avatar>
+                                </Button>
+                                <Popper
+                                    open={open}
+                                    anchorEl={anchorRef.current}
+                                    role={undefined}
+                                    placement="bottom-start"
+                                    transition
+                                    disablePortal
+                                    className={rmv ? 'bg-black8 rounded-lg z-50' : 'bg-black rounded-lg z-10'}
+                                    sx={{ zIndex: 9999 }}
+                                >
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            className={rmv ? 'bg-black8 px-5 z-10 border-2' : 'bg-black px-5'}
+                                            {...TransitionProps}
+                                            style={{
+                                                zIndex: 9999,
+                                                transformOrigin:
+                                                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                            }}
+                                            sx={{ zIndex: 9999 }}
+
+                                        >
+                                            <Paper sx={{ zIndex: 2 }}  >
+                                                <ClickAwayListener onClickAway={handleClose} sx={{ zIndex: '10' }}>
+                                                    <MenuList
+                                                        autoFocusItem={open}
+                                                        id="composition-menu"
+                                                        aria-labelledby="composition-button"
+                                                        onKeyDown={handleListKeyDown}
+                                                        sx={{ zIndex: '1' }}
+                                                    >
+                                                        <MenuItem onClick={handleClose} sx={{ zIndex: 10 }}>
+                                                            <Link
+                                                                to="/profile"
+                                                                className={navLink1}
+                                                            >
+                                                                {t('nav.p1')}
+                                                            </Link>
+                                                        </MenuItem>
+                                                        <MenuItem onClick={handleClose}>   <Link
+                                                            to="/wishlist"
+                                                            className={navLink1}
+                                                        >
+                                                            Wishlist
+                                                        </Link></MenuItem>
+                                                        <MenuItem onClick={(e) => {
+                                                            handleLogout();
+                                                            handleClose(e);
+                                                        }}>
+                                                            <Link
+
+                                                                className={navLink1}
+                                                            >
+                                                                Log Out
+                                                            </Link>
+                                                        </MenuItem>
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+                            </div>}
+                        </li>
+                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onClick={(e) => {
+                            handleLangChange(e)
+                        }}>
+                            <option selected={lang.data} value="en">  EN </option>
+                            <option selected={!lang.data} value="gr"> GR </option>
+
+                        </select>
+
+                    </ul>
+
+
+                    <div className="lg:hidden">
+                        <button
+                            aria-label="Open Menu"
+                            title="Open Menu"
+                            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+                            onClick={() => setIsMenuOpen(true)}
+                        >
+                            <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+                                <path
+                                    fill="currentColor"
+                                    d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
+                                />
+                                <path
+                                    fill="currentColor"
+                                    d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
+                                />
+                                <path
+                                    fill="currentColor"
+                                    d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
+                                />
+                            </svg>
+                        </button>
+                        {isMenuOpen && (
+                            <div className='fixed top-0 left-0 w-full z-[999] bg-black border flex justify-center'>
+                                <div className=" flex flex-row-reverse justify-between py-10">
+                                    <div className=" ">
+                                        <button
+                                            aria-label="Close Menu"
+                                            title="Close Menu"
+                                            className="py-6 px-4 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-black text-5xl"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            <svg className="w-10 text-gray-600" viewBox="0 0 24 24">
+                                                <path
+                                                    fill="currentColor"
+                                                    d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
+                                                />
+                                            </svg>
+                                        </button>
+
+                                    </div>
+                                    <div className='  '>
+                                    <nav className="text-slate-900 flex  ">
+                                        <ul className="space-y-4 p-5">
+                                            {
+                                                ["/", "/shop", "/make-order", "/insider-alif", "/contact"].map((item, index) => <li className='mx-2 capitalize' key={index}>
+                                                    <Link
+                                                        to={item}
+                                                        className={navLink2}
+                                                    >
+                                                        {t(`nav.${index}`)}
+                                                    </Link>
+                                                </li>)
+                                            }
+                                              <li>
                             {!user?.email && <div>
                                 <Button
                                     ref={anchorRef}
@@ -272,70 +418,6 @@ const Navbar = () => {
                                 </Popper>
                             </div>}
                         </li>
-                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onClick={(e) => {
-                            handleLangChange(e)
-                        }}>
-                            <option selected={lang.data} value="en">  EN </option>
-                            <option selected={!lang.data} value="gr"> GR </option>
-
-                        </select>
-
-                    </ul>
-
-
-                    <div className="lg:hidden">
-                        <button
-                            aria-label="Open Menu"
-                            title="Open Menu"
-                            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-                            onClick={() => setIsMenuOpen(true)}
-                        >
-                            <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-                                <path
-                                    fill="currentColor"
-                                    d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-                                />
-                                <path
-                                    fill="currentColor"
-                                    d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-                                />
-                                <path
-                                    fill="currentColor"
-                                    d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-                                />
-                            </svg>
-                        </button>
-                        {isMenuOpen && (
-                            <div className='fixed top-0 left-0 w-full z-[999] bg-black'>
-                                <div className=" flex flex-row-reverse justify-between py-10">
-                                    <div className=" ">
-                                        <button
-                                            aria-label="Close Menu"
-                                            title="Close Menu"
-                                            className="py-6 px-4 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-black text-5xl"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            <svg className="w-10 text-gray-600" viewBox="0 0 24 24">
-                                                <path
-                                                    fill="currentColor"
-                                                    d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                                                />
-                                            </svg>
-                                        </button>
-
-                                    </div>
-                                    <nav className="text-slate-900">
-                                        <ul className="space-y-4 p-5">
-                                            {
-                                                ["/", "/shop", "/make-order", "/insider-alif", "/contact"].map((item, index) => <li className='mx-2 capitalize' key={index}>
-                                                    <Link
-                                                        to={item}
-                                                        className={navLink2}
-                                                    >
-                                                        {t(`nav.${index}`)}
-                                                    </Link>
-                                                </li>)
-                                            }
                                         </ul>
 
                                         <ul className="flex justify-between items-center  space-x-8 lg:flex mt-6">
@@ -349,6 +431,7 @@ const Navbar = () => {
                                             </select>
                                         </ul>
                                     </nav>
+                                    </div>
                                 </div>
                             </div>
                         )}
