@@ -73,15 +73,12 @@ const Navbar = () => {
     const [langus, setLangus] = useState(
         localStorage.getItem("langu") || "en"
     )
-   async function handleLangChange(lang) {
-           console.log(lang.target.value);
-      await setLangus(lang.target.value);
-    //   window.location.reload()
-        // store.dispatch(addLanguActions.addLangu())
+   async function handleLangChange(lang) { 
+        await i18next.changeLanguage(lang.target.value) 
+        await setLangus(lang.target.value);
         localStorage.setItem("langu", lang.target.value)
         store.dispatch(addLanguActions.addLangu(lang.target.value))
-        i18next.changeLanguage(lang.target.value)
-        lang.preventDefault()
+        
     }
     const handleLogout = async () => {
         removeCookie("token")
