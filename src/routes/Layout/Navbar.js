@@ -73,18 +73,21 @@ const Navbar = () => {
     const [langus, setLangus] = useState(
         localStorage.getItem("langu") || "en"
     )
-   async function handleLangChange(lang) { 
-        await i18next.changeLanguage(lang.target.value) 
-        await setLangus(lang.target.value);
-        localStorage.setItem("langu", lang.target.value)
-        store.dispatch(addLanguActions.addLangu(lang.target.value))
-        
+    function handleLangChange(lang) {
+
+        setLangus(lang.target.value);
+        console.log(lang.target.value);
+        // store.dispatch(addLanguActions.addLangu())
     }
     const handleLogout = async () => {
         removeCookie("token")
         store.dispatch(addUserActions.removeUser({}))
     }
-    
+    useEffect(() => {
+        localStorage.setItem("langu", langus)
+        store.dispatch(addLanguActions.addLangu(langus))
+        i18next.changeLanguage(langus)
+    }, [langus])
     return (
         <div className='containe z-50'>
             <div className={navbarColor}>
@@ -214,12 +217,10 @@ const Navbar = () => {
                                 </Popper>
                             </div>}
                         </li>
-                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onClick={(e) => {
+                        <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onChange={(e) => {
                             handleLangChange(e)
-                        }}
-                        
-                        >
-                               <option selected={lang.data} value="en">  EN </option>
+                        }}>
+                            <option selected={lang.data} value="en">  EN </option>
                             <option selected={!lang.data} value="gr"> GR </option>
 
                         </select>
@@ -423,7 +424,7 @@ const Navbar = () => {
                                         <ul className="flex justify-between items-center  space-x-8 lg:flex mt-6">
 
 
-                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg ml-7 " onClick={(e) => {
+                                            <select id="lang" className="bg-gray-50    text-slate-800 text-sm rounded-lg ml-7 " onChange={(e) => {
                                                 handleLangChange(e)
                                             }} >
                                                 <option selected={lang.data} className="text-slate-900" value="en"> EN</option>
