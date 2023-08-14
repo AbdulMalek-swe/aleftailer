@@ -8,18 +8,23 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 const Modal = () => {
   const user = useSelector(state=>state.reducer.user)
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(localStorage.getItem("modalValue")?false:true);
   
   useEffect(() => {
-    if(user.isSubscribe){
+    if(user?.isSubscribe){
       setIsOpen(false)
     }
    else{
     setInterval(() => {
       setIsOpen(false)
+      localStorage.setItem("modalValue",true)
     }, 20000);
    }
-  },[user?.isSubscribe])
+   
+  },[])
+  // useEffect(() => {
+  //   localStorage.setItem("modalValue",true)
+  // },[])
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -35,17 +40,21 @@ const Modal = () => {
       setEmail('')
     })
    }
+   const modalChange = () =>{
+    localStorage.setItem("modalValue",true)
+    setIsOpen(false)
+   }
 
   return (
     <div className='w-1/2'>
-      <ModalArea isOpen={isOpen} onClose={closeModal}  setEmail={setEmail} subscribe={subscribe} email={email}/>
+      <ModalArea isOpen={isOpen} onClose={closeModal}  setEmail={setEmail} subscribe={subscribe} email={email} modalChange={modalChange}/>
     </div>
   );
 };
 
 export default Modal;
 
-export const ModalArea = ({ isOpen, onClose,setEmail,subscribe,email }) => {
+export const ModalArea = ({ isOpen, onClose,setEmail,subscribe,email,modalChange }) => {
   const {t} = useTranslation()
   if (!isOpen) return null;
   const handleClose = () => {
@@ -75,7 +84,7 @@ export const ModalArea = ({ isOpen, onClose,setEmail,subscribe,email }) => {
           <div className="form-control">
             <label className="label cursor-pointer flex items-center">
               <Checkbox
-                defaultChecked
+                
                 sx={{
                   color: '#656363',
                   '&.Mui-checked': {
@@ -83,6 +92,7 @@ export const ModalArea = ({ isOpen, onClose,setEmail,subscribe,email }) => {
                   },
                   border: '3px red green'
                 }}
+                onChange={(e)=>modalChange(e.target.value)}
               />
               <p className='text-primary363'>{t('modal.dontshow')}</p>
             </label>

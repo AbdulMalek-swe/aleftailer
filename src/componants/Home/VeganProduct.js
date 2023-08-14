@@ -20,8 +20,8 @@ const VeganProduct = () => {
         <div className='mx-'>
           <div className='grid md:grid-cols-2 grid-cols-1 gap-x-4 items-center'>
             <div>
-              <h1 className='text-center mb-10 font-arial text-4xl uppercase py-7'>{vegan[0]?.veganHeader}</h1>
-              <p className='text-justify'> {vegan[0]?.veganDescription} </p>
+              <h1 className='text-center mb-10 font-arial text-2xl uppercase py-7 xl:text-4xl lg:text-3xl  '>{vegan[0]?.veganHeader}</h1>
+              <p className='text-justify xl:text-xl md:text-base text-sm'> {vegan[0]?.veganDescription} </p>
               <div className='text-center py-7'>
                 <Link to="/shop">
                   <Button1 />
@@ -72,8 +72,8 @@ export const ProductsCard = ({ item }) => {
               <div className='flex justify-center'>
                 <img src={item?.veganImage} alt='loading...' className='h-8 w-8 rounded-full ' />
               </div>
-              <h1 className='mb-3 font-arial text-2xl uppercase py-1 font-bold'>{item?.veganHeader} </h1>
-              <p className='font-arial text-justify leading-5'> {item?.veganDescription}</p>
+              <h1 className='mb-3 font-arial xl:text-3xl lg:text-2xl text-xl uppercase py-1 font-bold'>{item?.veganHeader} </h1>
+              <p className='font-arial text-justify leading-5 xl:text-xl md:text-base text-sm'> {item?.veganDescription}</p>
             </div>
           </div>)
         }

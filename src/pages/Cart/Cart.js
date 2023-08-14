@@ -6,6 +6,7 @@ import { Checkbox } from '@mui/material';
 import cartHook from 'hooks/cartHook';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import axios from 'apiService/axios';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -25,9 +26,7 @@ const Cart = () => {
     localStorage.setItem("checkCart", JSON.stringify(checkOut))
   }, [checkOut])
   const cart = useSelector(state => state.reducer.cart);
-  
   const { addToCartHandle, removeFromCartHandle } = cartHook();
-
   useEffect(() => {
     localStorage.setItem("newcart", JSON.stringify(cart.items))
   }, [cart.items])
@@ -63,6 +62,15 @@ const Cart = () => {
    const cartInc = id =>{
     addToCartHandleItems({_id:id})
    }
+   useEffect(()=>{
+    const localStorageCart = JSON.parse(localStorage.getItem("newcart"));
+    
+     axios.post("/cart-valid",{localStorageCart})
+     .then(res=>{
+      console.log(res);
+      localStorage.setItem("newcart",JSON.stringify(res.data.result))
+     })
+   },[])
   return (
     <div className='container-sk mt-52 mb-7'>
       <h1 className='text-center shadow-lg py-5 font-sans font-bold uppercase leading-10 rounded-lg text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>your cart</h1>
@@ -106,7 +114,7 @@ const Cart = () => {
             <h2 className=' my-5 font-semibold text-4xl'> {t('cart.carttotal')}</h2>
             <p className='flex justify-between font-light'>
               <span className='block text-base'>{t('cart.includevat')}</span>
-              <span className='font-normal text-xl block'>€229.00</span>
+              <span className='font-normal text-xl block'>€{sum}</span>
             </p>
             <hr className='h-[1px] bg-gray-300 my-7' />
             <h2 className='text-xl font-semibold'>{t('cart.shipping')}</h2>
