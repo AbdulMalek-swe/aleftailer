@@ -74,20 +74,20 @@ const Navbar = () => {
         localStorage.getItem("langu") || "en"
     )
    async function handleLangChange(lang) {
-
+           console.log(lang.target.value);
       await setLangus(lang.target.value);
-      window.location.reload()
+    //   window.location.reload()
         // store.dispatch(addLanguActions.addLangu())
+        localStorage.setItem("langu", lang.target.value)
+        store.dispatch(addLanguActions.addLangu(lang.target.value))
+        i18next.changeLanguage(lang.target.value)
+        lang.preventDefault()
     }
     const handleLogout = async () => {
         removeCookie("token")
         store.dispatch(addUserActions.removeUser({}))
     }
-    useEffect(() => {
-        localStorage.setItem("langu", langus)
-        store.dispatch(addLanguActions.addLangu(langus))
-        i18next.changeLanguage(langus)
-    }, [langus])
+    
     return (
         <div className='containe z-50'>
             <div className={navbarColor}>
@@ -219,8 +219,10 @@ const Navbar = () => {
                         </li>
                         <select id="lang" className="bg-gray-50 border border-red text-slate-800 text-sm rounded-lg " onClick={(e) => {
                             handleLangChange(e)
-                        }}>
-                            <option selected={lang.data} value="en">  EN </option>
+                        }}
+                        
+                        >
+                               <option selected={lang.data} value="en">  EN </option>
                             <option selected={!lang.data} value="gr"> GR </option>
 
                         </select>
