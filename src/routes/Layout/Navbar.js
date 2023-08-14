@@ -73,9 +73,10 @@ const Navbar = () => {
     const [langus, setLangus] = useState(
         localStorage.getItem("langu") || "en"
     )
-    function handleLangChange(lang) {
+   async function handleLangChange(lang) {
 
-        setLangus(lang.target.value);
+      await setLangus(lang.target.value);
+      window.location.reload()
         // store.dispatch(addLanguActions.addLangu())
     }
     const handleLogout = async () => {
