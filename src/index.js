@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -14,6 +14,8 @@ import { useCookies } from 'react-cookie';
 import { getUser } from 'hooks/ProfileGet';
 import spinnergf from 'assets/spinnerloading.gif'
  import './i18n'
+import { motion } from 'framer-motion';
+
 function App() {
   const [, , removeCookie] = useCookies(["token"]);
   useEffect(()=>{
@@ -24,10 +26,32 @@ function App() {
     //   removeCookie("token")
     //  }
   },[removeCookie])
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setCursorPosition({ x: e.clientX, y: e.clientY });
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <Suspense fallback={<div className='flex justify-center items-center'> 
       <img src={spinnergf} alt='loading...' className='w-36 h-36'/>
     </div>}>
+    <motion.div  
+        className="cursor-shadow"
+        style={{
+          left: cursorPosition.x + 'px',
+          top: cursorPosition.y + 'px'
+        }}
+        >
+ 
+        </motion.div>
        <RouterProvider router={route}/>
     </Suspense>
     

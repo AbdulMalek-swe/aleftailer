@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import img1 from 'assets/new.svg'
 import { Button1 } from 'componants/Common/Button/Button';
 import axios from 'apiService/axios';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+ 
 const VeganProduct = () => {
   const [vegan, setVegan] = useState([])
   useEffect(() => {
@@ -12,10 +12,11 @@ const VeganProduct = () => {
         setVegan(res?.data?.result)
       })
   }, [])
-
+  
   return (
     <>
       <div className='container-sk py-7'>
+
 
         <div className='mx-'>
           <div className='grid md:grid-cols-2 grid-cols-1 gap-x-4 items-center'>
@@ -36,11 +37,7 @@ const VeganProduct = () => {
         </div>
         <div className='py-7'>
           <div className='grid md:grid-cols-3 grid-cols-1 gap-x-6'>
-            {/* {
-          vegan.slice(1,4).map((item,index)=><ProductsCard key={index} item={item}/>)
-        }
-          */}
-
+             
           </div>
 
         </div>

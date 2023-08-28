@@ -172,7 +172,7 @@ return (
 
     </div>
     <div className='mt-12 w-full   lg:h-96 md:h-72 h-52'>
-<iframe width="100%" height="100%" className="   " frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.9919503118617!2d23.7299410121236!3d37.97731717181793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd3c0eea5cab%3A0x38339e8dc1621ea9!2sKolokotroni%209%2C%20152%2033%2C%20Athina%20105%2062%2C%20Greece!5e0!3m2!1sen!2sbd!4v1690947871761!5m2!1sen!2sbd"></iframe>
+<iframe width="100%" height="100%" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.0495256149634!2d23.796452975254503!3d38.02262487192404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a199789a66e817%3A0x35aceff7cca029cb!2sAlef%20-atelier-!5e0!3m2!1sen!2sbd!4v1693115695204!5m2!1sen!2sbd"></iframe>
 </div>
 </div>
 

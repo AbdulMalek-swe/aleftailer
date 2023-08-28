@@ -138,3 +138,18 @@ box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.155);
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
   z-index: 0 !important;
 }
+
+
+
+.cursor-shadow {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: black;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: multiply; /* Adjust blend mode as needed */
+  filter: blur(100px); /* Adjust blur effect */
+}

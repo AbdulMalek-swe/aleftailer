@@ -138,7 +138,7 @@ const Navbar = () => {
                         </li>
                         <li>
                            {
-                            !user.email && <Link to="/login"  className={navLink1}>Login</Link>
+                            !user.email && <Link to="/login"  className={navLink1}>{t("sign.login")}</Link>
                            }     
                             {user?.email && <div className='z-10'>
                                 <Button
